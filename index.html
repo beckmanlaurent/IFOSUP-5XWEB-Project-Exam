@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WebAtlas · Comprendre le web</title>
+    <meta name="description"
+        content="WebAtlas explique cinq notions du web aux débutants : la timeline, les URL, les noms de domaine, les standards et la sécurité.">
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%235E7F6B'/%3E%3C/svg%3E">
+
+    <!-- Polices chargées depuis le site officiel Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Jost:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js"></script>
+</head>
+
+<body>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="logo" href="index.html">WebAtlas</a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+            <nav class="site-nav" id="menu" aria-label="Navigation principale">
+                <ul>
+                    <li><a href="index.html" aria-current="page">Accueil</a></li>
+                    <li><a href="timeline.html">Timeline</a></li>
+                    <li><a href="urls.html">URL</a></li>
+                    <li><a href="domaines.html">Domaines</a></li>
+                    <li><a href="standards.html">Standards</a></li>
+                    <li><a href="securite.html">Sécurité</a></li>
+                    <li><a href="sources.html">Sources</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="contenu" tabindex="-1">
+
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="hero-texte">
+                    <h1>Comprendre le web, <span class="mot-chaud">un sujet à la fois</span></h1>
+                    <p class="lead">WebAtlas est ton carnet de bord pour explorer le web : cinq escales, des schémas,
+                        des jeux et des exemples réels, sans jargon inutile.</p>
+                    <a class="btn" href="timeline.html">Commencer le voyage</a>
+                </div>
+                <svg class="illu hero-illu" viewBox="0 0 420 340" role="img" aria-labelledby="hero-illu-titre">
+                    <title id="hero-illu-titre">Une carte et une boussole, pour explorer le web</title>
+                    <g transform="rotate(-5 160 170)">
+                        <rect class="trait sable" x="20" y="40" width="290" height="220" rx="20" />
+                        <path class="trait fin" d="M117 40V260M214 40V260M20 113H310M20 187H310" />
+                        <path class="trait" d="M62 218C92 130 118 104 158 118S232 186 268 118"
+                            stroke-dasharray="0.1 9" />
+                        <circle class="chaud" cx="62" cy="218" r="9" />
+                        <circle class="trait blanc" cx="158" cy="118" r="8" />
+                        <circle class="trait blanc" cx="268" cy="118" r="8" />
+                    </g>
+                    <circle class="trait blanc" cx="310" cy="225" r="68" />
+                    <circle class="trait fin" cx="310" cy="225" r="54" />
+                    <path class="trait" d="M310 157v10M310 293v-10M242 225h10M378 225h-10" />
+                    <text class="nord" x="310" y="148" text-anchor="middle">N</text>
+                    <g class="aiguille">
+                        <path class="chaud" d="M310 175L324 225H296z" />
+                        <path class="trait sauge" d="M310 275L324 225H296z" />
+                        <circle class="trait blanc" cx="310" cy="225" r="5" />
+                    </g>
+                    <circle class="chaud" cx="372" cy="62" r="5" />
+                    <circle class="trait sauge" cx="396" cy="98" r="4" />
+                    <circle class="trait sable" cx="340" cy="34" r="3" />
+                </svg>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="sujets">
+            <div class="container">
+                <h2 id="sujets"><img class="ico-titre" src="img/icones/boussole.svg" alt="" width="24" height="24">Cinq escales pour comprendre le web</h2>
+                <p class="carnet" id="carnet" aria-live="polite" hidden></p>
+                <div class="card-grid">
+
+                    <a class="card" href="timeline.html">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="4.5" cy="12" r="2" />
+                            <circle cx="12" cy="12" r="2" />
+                            <circle cx="19.5" cy="12" r="2" />
+                            <path d="M6.5 12h3.5M14 12h3.5" />
+                        </svg>
+                        <h3>Timeline du web</h3>
+                        <p>Des premiers sites au Web 3.0 : les dates qui ont changé notre façon d'utiliser le web.</p>
+                    </a>
+
+                    <a class="card" href="urls.html">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" aria-hidden="true">
+                            <rect x="2.5" y="5" width="19" height="14" rx="2" />
+                            <path d="M2.5 9.5h19M6 7.25h.01M9 7.25h.01" />
+                        </svg>
+                        <h3>Les URL</h3>
+                        <p>Comment lire une adresse web morceau par morceau, et ce que veulent dire 200, 404 ou 301.</p>
+                    </a>
+
+                    <a class="card" href="domaines.html">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="12" cy="12" r="9" />
+                            <path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18" />
+                        </svg>
+                        <h3>Les noms de domaine</h3>
+                        <p>Qui les vend, combien ils coûtent, et comment le DNS retrouve un site à partir de son nom.
+                        </p>
+                    </a>
+
+                    <a class="card" href="standards.html">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" aria-hidden="true">
+                            <rect x="4" y="4" width="16" height="16" rx="2" />
+                            <path d="M8 12.5l3 3 5-6.5" />
+                        </svg>
+                        <h3>Les standards du web</h3>
+                        <p>Qui écrit les règles qui font fonctionner une même page sur tous les navigateurs.</p>
+                    </a>
+
+                    <a class="card" href="securite.html">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" aria-hidden="true">
+                            <path d="M12 3l8 3v6c0 4.5-3.2 7.7-8 9-4.8-1.3-8-4.5-8-9V6z" />
+                        </svg>
+                        <h3>La sécurité</h3>
+                        <p>Phishing, logiciels malveillants, force brute : les attaques courantes et comment s'en
+                            protéger.</p>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="apropos">
+            <div class="container prose">
+                <h2 id="apropos"><img class="ico-titre" src="img/icones/info.svg" alt="" width="24" height="24">À propos du site</h2>
+                <p><strong>Pour qui ?</strong> Pour quelqu'un qui découvre le web et lit seul, sans personne pour lui
+                    expliquer. Chaque page part des bases et reste simple.</p>
+                <p><strong>Qui l'a fait ?</strong> Laurent Beckman, étudiant en première année de Web Developer, dans le
+                    cadre du cours Environnement et technologies Web.</p>
+                <p><strong>D'où viennent les informations ?</strong> Chaque information a été vérifiée dans au moins
+                    deux sources. Toutes sont listées, avec leur lien, sur la <a href="sources.html">page Sources</a>,
+                    ainsi que les outils d'IA utilisés.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>WebAtlas, par Laurent Beckman, 2026.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

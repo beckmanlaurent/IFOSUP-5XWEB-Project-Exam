@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sources et auteurs · WebAtlas</title>
+    <meta name="description"
+        content="Les sources consultées pour chaque sujet de WebAtlas, l'auteur du site et les outils d'IA utilisés.">
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%235E7F6B'/%3E%3C/svg%3E">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Jost:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js"></script>
+</head>
+
+<body>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="logo" href="index.html">WebAtlas</a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+            <nav class="site-nav" id="menu" aria-label="Navigation principale">
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="timeline.html">Timeline</a></li>
+                    <li><a href="urls.html">URL</a></li>
+                    <li><a href="domaines.html">Domaines</a></li>
+                    <li><a href="standards.html">Standards</a></li>
+                    <li><a href="securite.html">Sécurité</a></li>
+                    <li><a href="sources.html" aria-current="page">Sources</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="contenu" tabindex="-1">
+
+        <div class="container page-title">
+            <h1>Sources et auteurs</h1>
+            <p class="lead">Chaque information de ce site a une origine. Voici les sources consultées, l'auteur du site
+                et les outils utilisés pour le construire.</p>
+            <svg class="illu page-illu" viewBox="0 0 160 130" aria-hidden="true" focusable="false">
+                <rect class="trait sable" x="24" y="88" width="100" height="22" rx="5" />
+                <rect class="trait sauge" x="34" y="62" width="100" height="22" rx="5" />
+                <rect class="trait blanc" x="20" y="36" width="100" height="22" rx="5" />
+                <path class="trait fin" d="M32 47H66M44 73H84M36 99H90" />
+                <path class="chaud" d="M96 36v32l8-6 8 6V36z" />
+            </svg>
+        </div>
+
+        <section class="section" aria-labelledby="auteur">
+            <div class="container prose">
+                <h2 id="auteur"><img class="ico-titre" src="img/icones/plume.svg" alt="" width="24" height="24">Auteur</h2>
+                <p>Ce site a été réalisé par <strong>Laurent Beckman</strong>, étudiant en première année de Web
+                    Developer, dans le cadre du cours Environnement et technologies Web.</p>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="sources">
+            <div class="container">
+                <h2 id="sources"><img class="ico-titre" src="img/icones/livre.svg" alt="" width="24" height="24">Sources par sujet</h2>
+                <div class="prose">
+                    <p>Chaque sujet s'appuie sur une source principale et une source secondaire. Les sources
+                        complémentaires vérifient une date, un chiffre ou un détail précis. Le nom du sujet renvoie vers
+                        la page correspondante.</p>
+                </div>
+
+                <div class="table-wrap">
+                    <table class="table-sources">
+                        <caption class="sr-only">Sources consultées, par sujet</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Sujet</th>
+                                <th scope="col">Rôle</th>
+                                <th scope="col">Source</th>
+                                <th scope="col">Auteur ou organisme</th>
+                                <th scope="col">Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <th scope="rowgroup" rowspan="18"><a href="timeline.html">Timeline du web</a></th>
+                                <td>Principale</td>
+                                <td><a href="https://www.w3.org/History.html">A Little History of the World Wide
+                                        Web</a><span class="url-texte">https://www.w3.org/History.html</span></td>
+                                <td>W3C et Robert Cailliau (CERN)</td>
+                                <td>1995</td>
+                            </tr>
+                            <tr>
+                                <td>Secondaire</td>
+                                <td><a
+                                        href="https://www.researchgate.net/publication/352892794_Evolution_of_the_Web_from_Web_10_to_40">Evolution
+                                        of the Web from Web 1.0 to 4.0</a><span
+                                        class="url-texte">https://www.researchgate.net/publication/352892794_Evolution_of_the_Web_from_Web_10_to_40</span>
+                                </td>
+                                <td>Asaad Khaleel Ibrahim</td>
+                                <td>2021</td>
+                            </tr>
+                            <tr>
+                                <td>Complémentaire</td>
+                                <td><a href="https://home.cern/fr/science/computing/birth-web/short-history-web">Une brève
+                                        histoire du Web</a><span
+                                        class="url-texte">https://home.cern/fr/science/computing/birth-web/short-history-web</span>
+                                </td>
+                                <td>CERN</td>
+                                <td>2026</td>
+                            </tr>
+                            <tr>
+                                <td>Complémentaire</td>
+                                <td><a
+                                        href="https://web.archive.org/web/20070916144913/http://wp.netscape.com/newsref/pr/newsrelease67.html">Netscape
+                                        and Sun announce JavaScript (communiqué, archive)</a><span
+                                        class="url-texte">https://web.archive.org/web/20070916144913/http://wp.netscape.com/newsref/pr/newsrelease67.html</span>
+                                </td>
+                                <td>Netscape et Sun Microsystems</td>
+                                <td>1995</td>
+                            </tr>
+                            <tr>
+                                <td>Complémentaire</td>
+                                <td><a href="https://historylink.org/File/23230">Amazon: The Early Years
+                                        (1995-1999)</a><span class="url-texte">https://historylink.org/File/23230</span></td>
+                                <td>Jennie Cecil Moore, HistoryLink.org</td>
+                                <td>2025</td>
+                            </tr>
+                            <tr>
+                                <td>Complémentaire</td>
+                                <td><a href="https://orf.at/stories/3179764/">Ebay wird 25 (article en allemand)</a><span
+                                        class="url-texte">https://orf.at/stories/3179764/</span></td>
+                                <td>ORF (radio-télévision publique autrichienne)</td>
+                                <td>2020</td>
+                            </tr>
+                            <tr>
+                                <td>Complémentaire</td>
+                                <td><a href="https://www.w3.org/TR/REC-CSS1-961217">Cascading Style Sheets, level
+                                        1</a><span class="url-texte">https://www.w3.org/TR/REC-CSS1-961217</span></td>
+                                <td>W3C</td>
+                                <td>1996</td>
+                            </tr>
+                            <tr>
+                                <td>Complémentaire</td>
+                                <td><a
+                                        href="https://web.archive.org/web/20111110143942/http://darcyd.com/fragmented_future.pdf">Fragmented
+                                        Future (premier emploi de « Web 2.0 », archive)</a><span
+                                        class="url-texte">https://web.archive.org/web/20111110143942/http://darcyd.com/fragmented_future.pdf</span>
+                                </td>
+                                <td>Darcy DiNucci, magazine Print</td>
+                                <td>1999</td>
+                            </tr>
+                            <tr>
+                                <td>Complémentaire</td>
+                                <td><a href="https://www.w3.org/news/2001/w3c-launches-semantic-web-activity">W3C Launches
+                                        Semantic Web Activity</a><span
+                                        class="url-texte">https://www.w3.org/news/2001/w3c-launches-semantic-web-activity</span>
+                                </td>
+                                <td>W3C</td>
+                                <td>2001</td>
+                            </tr>
+                            <tr>
+                                <td>Complémentaire</td>
+                                <td><a href="https://meta.wikimedia.org/wiki/Wikipedia_20/Results">Wikipedia 20 (bilan
+                                        des 20 ans de Wikipédia)</a><span
+                                        class="url-texte">https://meta.wikimedia.org/wiki/Wikipedia_20/Results</span></td>
+                                <td>Wikimedia</td>
+                                <td>2021</td>
+                            </tr>
+                            <tr>
+                                <td>Complémentaire</td>
+                                <td><a href="https://about.google/our-story/">Notre histoire (Google)</a><span
+                                        class="url-texte">https://about.google/our-story/</span></td>
+                                <td>Google</td>
+                                <td>2026</td>
+                            </tr>
+                            <tr>
+                                <td>Complémentaire</td>
+                                <td><a href="https://www.meta.com/about/company-info/">Informations sur l'entreprise
+                                        (Meta, ex-Facebook)</a><span
+                                        class="url-texte">https://www.meta.com/about/company-info/</span></td>
+                                <td>Meta</td>
+                                <td>2026</td>
+                            </tr>
+                            <tr>
+                                <td>Complémentaire</td>
+                                <td><a href="https://www.youtube.com/watch?v=jNQXAC9IVRw">Me at the zoo (première vidéo
+                                        publiée sur YouTube)</a><span
+                                        class="url-texte">https://www.youtube.com/watch?v=jNQXAC9IVRw</span></td>
+                                <td>Jawed Karim, cofondateur de YouTube</td>
+                                <td>2005</td>
+                            </tr>
+                            <tr>
+                                <td>Complémentaire</td>
+                                <td><a
+                                        href="https://www.apple.com/newsroom/2007/01/09Apple-Reinvents-the-Phone-with-iPhone/">Apple
+                                        Reinvents the Phone with iPhone</a><span
+                                        class="url-texte">https://www.apple.com/newsroom/2007/01/09Apple-Reinvents-the-Phone-with-iPhone/</span>
+                                </td>
+                                <td>Apple</td>
+                                <td>2007</td>
+                            </tr>
+                            <tr>
+                                <td>Complémentaire</td>
+                                <td><a href="https://www.w3.org/2014/10/html5-rec.html.fr">HTML5 devient une
+                                        recommandation du W3C</a><span
+                                        class="url-texte">https://www.w3.org/2014/10/html5-rec.html.fr</span></td>
+                                <td>W3C</td>
+                                <td>2014</td>
+                            </tr>
+                            <tr>
+                                <td>Complémentaire</td>
+                                <td><a
+                                        href="https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data?hl=fr">Présentation
+                                        des données structurées</a><span
+                                        class="url-texte">https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data?hl=fr</span>
+                                </td>
+                                <td>Google Search Central</td>
+                                <td>2026</td>
+                            </tr>
+                            <tr>
+                                <td>Complémentaire</td>
+                                <td><a href="https://gavwood.com/dappsweb3.html">ĐApps: What Web 3.0 Looks Like</a><span
+                                        class="url-texte">https://gavwood.com/dappsweb3.html</span></td>
+                                <td>Gavin Wood</td>
+                                <td>2014</td>
+                            </tr>
+                            <tr>
+                                <td>Complémentaire</td>
+                                <td><a
+                                        href="https://www.cnbc.com/2022/04/20/what-is-web3-gavin-wood-who-invented-the-word-gives-his-vision.html">What
+                                        is 'Web3'?</a><span
+                                        class="url-texte">https://www.cnbc.com/2022/04/20/what-is-web3-gavin-wood-who-invented-the-word-gives-his-vision.html</span>
+                                </td>
+                                <td>CNBC</td>
+                                <td>2022</td>
+                            </tr>
+
+                            <tr>
+                                <th scope="rowgroup" rowspan="3"><a href="urls.html">Les URL</a></th>
+                                <td>Principale</td>
+                                <td><a
+                                        href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_URL">What
+                                        is a URL?</a><span
+                                        class="url-texte">https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_URL</span>
+                                </td>
+                                <td>MDN contributors</td>
+                                <td>2026</td>
+                            </tr>
+                            <tr>
+                                <td>Secondaire</td>
+                                <td><a href="https://url.spec.whatwg.org/">URL Standard</a><span
+                                        class="url-texte">https://url.spec.whatwg.org/</span></td>
+                                <td>WHATWG</td>
+                                <td>2026</td>
+                            </tr>
+                            <tr>
+                                <td>Complémentaire</td>
+                                <td><a href="https://developer.mozilla.org/fr/docs/Web/HTTP/Reference/Status">Codes de
+                                        statut de réponse HTTP</a><span
+                                        class="url-texte">https://developer.mozilla.org/fr/docs/Web/HTTP/Reference/Status</span>
+                                </td>
+                                <td>MDN contributors</td>
+                                <td>2026</td>
+                            </tr>
+
+                            <tr>
+                                <th scope="rowgroup" rowspan="7"><a href="domaines.html">Les noms de domaine</a></th>
+                                <td>Principale</td>
+                                <td><a href="https://developer.mozilla.org/fr/docs/Glossary/Domain">Domain (glossaire
+                                        MDN)</a><span
+                                        class="url-texte">https://developer.mozilla.org/fr/docs/Glossary/Domain</span>
+                                </td>
+                                <td>MDN contributors</td>
+                                <td>2025</td>
+                            </tr>
+                            <tr>
+                                <td>Secondaire</td>
+                                <td><a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name/">What
+                                        is a domain name?</a><span
+                                        class="url-texte">https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name/</span>
+                                </td>
+                                <td>Cloudflare</td>
+                                <td>2026</td>
+                            </tr>
+                            <tr>
+                                <td>Complémentaire</td>
+                                <td><a href="https://www.ovhcloud.com/fr/domains/tld/">Extensions de noms de domaine et
+                                        prix</a><span class="url-texte">https://www.ovhcloud.com/fr/domains/tld/</span></td>
+                                <td>OVHcloud</td>
+                                <td>2026</td>
+                            </tr>
+                            <tr>
+                                <td>Complémentaire</td>
+                                <td><a href="https://www.icann.org/resources/pages/gtld-lifecycle-2012-02-25-en">Life Cycle of
+                                        a Typical gTLD Domain Name</a><span
+                                        class="url-texte">https://www.icann.org/resources/pages/gtld-lifecycle-2012-02-25-en</span>
+                                </td>
+                                <td>ICANN</td>
+                                <td>2026</td>
+                            </tr>
+                            <tr>
+                                <td>Complémentaire</td>
+                                <td><a href="https://www.dnsbelgium.be/fr/faq">FAQ (quarantaine d'un .be)</a><span
+                                        class="url-texte">https://www.dnsbelgium.be/fr/faq</span></td>
+                                <td>DNS Belgium</td>
+                                <td>2026</td>
+                            </tr>
+                            <tr>
+                                <td>Complémentaire</td>
+                                <td><a
+                                        href="https://assets.dnsbelgium.be/attachment/Enduser_Terms_and_Conditions_fr_v6.2b_0.pdf">Conditions
+                                        générales d'enregistrement des .be (v6.2b, PDF)</a><span
+                                        class="url-texte">https://assets.dnsbelgium.be/attachment/Enduser_Terms_and_Conditions_fr_v6.2b_0.pdf</span>
+                                </td>
+                                <td>DNS Belgium</td>
+                                <td>2026</td>
+                            </tr>
+                            <tr>
+                                <td>Complémentaire</td>
+                                <td><a href="https://www.rfc-editor.org/rfc/rfc5737">RFC 5737 : adresses IPv4 réservées à
+                                        la documentation (192.0.2.0/24)</a><span
+                                        class="url-texte">https://www.rfc-editor.org/rfc/rfc5737</span></td>
+                                <td>IETF</td>
+                                <td>2010</td>
+                            </tr>
+
+                            <tr>
+                                <th scope="rowgroup" rowspan="2"><a href="standards.html">Les standards du web</a></th>
+                                <td>Principale</td>
+                                <td><a href="https://www.w3.org/standards/about/#what-are-web-standards">About W3C
+                                        Standards</a><span
+                                        class="url-texte">https://www.w3.org/standards/about/#what-are-web-standards</span>
+                                </td>
+                                <td>W3C</td>
+                                <td>2026</td>
+                            </tr>
+                            <tr>
+                                <td>Secondaire</td>
+                                <td><a href="https://developer.mozilla.org/fr/docs/Glossary/Web_standards">Web standards
+                                        (glossaire MDN)</a><span
+                                        class="url-texte">https://developer.mozilla.org/fr/docs/Glossary/Web_standards</span>
+                                </td>
+                                <td>MDN contributors</td>
+                                <td>2026</td>
+                            </tr>
+
+                            <tr>
+                                <th scope="rowgroup" rowspan="2"><a href="securite.html">La sécurité</a></th>
+                                <td>Principale</td>
+                                <td><a href="https://cyber.gouv.fr/securisation/10-regles-or-securite-numerique/">10
+                                        règles d'or en matière de sécurité numérique</a><span
+                                        class="url-texte">https://cyber.gouv.fr/securisation/10-regles-or-securite-numerique/</span>
+                                </td>
+                                <td>ANSSI (gouvernement français)</td>
+                                <td>2025</td>
+                            </tr>
+                            <tr>
+                                <td>Secondaire</td>
+                                <td><a href="https://safeonweb.be/en/safe-internet">Safe internet</a><span
+                                        class="url-texte">https://safeonweb.be/en/safe-internet</span></td>
+                                <td>Safeonweb (Centre pour la Cybersécurité Belgique)</td>
+                                <td>2026</td>
+                            </tr>
+
+                            <!--
+                MODÈLE pour ajouter une source : copier un bloc de deux lignes ci-dessus,
+                ou ajouter une ligne comme celle-ci à la fin du sujet concerné.
+                (Pense à augmenter le rowspan du sujet si tu ajoutes une ligne.)
+                <tr>
+                  <td>Complémentaire</td>
+                  <td><a href="https://...">Titre de la page</a><span class="url-texte">https://...</span></td>
+                  <td>Auteur ou organisme</td>
+                  <td>Année</td>
+                </tr>
+              -->
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="outils">
+            <div class="container prose">
+                <h2 id="outils"><img class="ico-titre" src="img/icones/etincelle.svg" alt="" width="24" height="24">Outils d'IA et ressources</h2>
+                <ul>
+                    <li><strong>Claude (Anthropic)</strong> : explication des sujets, aide à la rédaction des textes et
+                        à l'écriture du code HTML, CSS et JavaScript.</li>
+                    <li><strong>Schémas, icônes et illustrations de la frise</strong> : dessinés en SVG avec l'aide de Claude, pour ce site (dossier <code>img/</code>).</li>
+                    <li><strong>Polices</strong> : Jost et Inter, chargées depuis Google Fonts (licence libre SIL Open
+                        Font License).</li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>WebAtlas, par Laurent Beckman, 2026.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>La sécurité · WebAtlas</title>
+    <meta name="description"
+        content="Phishing, logiciels malveillants, force brute : comment fonctionnent les attaques courantes et comment s'en protéger, avec un quiz pour s'entraîner.">
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%235E7F6B'/%3E%3C/svg%3E">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Jost:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js"></script>
+    <script src="js/securite.js" defer></script>
+</head>
+
+<body>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="logo" href="index.html">WebAtlas</a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+            <nav class="site-nav" id="menu" aria-label="Navigation principale">
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="timeline.html">Timeline</a></li>
+                    <li><a href="urls.html">URL</a></li>
+                    <li><a href="domaines.html">Domaines</a></li>
+                    <li><a href="standards.html">Standards</a></li>
+                    <li><a href="securite.html" aria-current="page">Sécurité</a></li>
+                    <li><a href="sources.html">Sources</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="contenu" tabindex="-1">
+
+        <div class="container page-title">
+            <h1>La sécurité</h1>
+            <p class="lead">Sur le web, la plupart des attaques ne cherchent pas à casser un ordinateur : elles
+                cherchent à tromper la personne derrière l'écran. Voici comment les reconnaître.</p>
+            <svg class="illu page-illu" viewBox="0 0 160 130" aria-hidden="true" focusable="false">
+                <path class="trait sauge" d="M80 12l46 16v34c0 28-19 46-46 56-27-10-46-28-46-56V28z" />
+                <circle class="chaud" cx="80" cy="56" r="10" />
+                <path class="chaud" d="M75 62h10l3 24H72z" />
+            </svg>
+        </div>
+
+        <section class="section" aria-labelledby="attaques">
+            <div class="container">
+                <h2 id="attaques"><img class="ico-titre" src="img/icones/bouclier-alerte.svg" alt="" width="24" height="24">Trois attaques courantes</h2>
+                <div class="prose">
+                    <p>Retourne chaque carte pour voir comment l'attaque fonctionne et comment s'en protéger.</p>
+                </div>
+                <div class="card-grid">
+
+                    <div class="flip" data-flip>
+                        <div class="flip-inner">
+                            <div class="flip-face flip-front">
+                                <h3><img class="ico" src="img/icones/hamecon.svg" alt="" width="24" height="24">Le phishing</h3>
+                                <p>Aussi appelé hameçonnage : un faux message qui imite une organisation connue.</p>
+                            </div>
+                            <div class="flip-face flip-back">
+                                <h3><img class="ico" src="img/icones/hamecon.svg" alt="" width="24" height="24">Le phishing</h3>
+                                <p>Un courriel ou un SMS te pousse à cliquer sur un lien piégé ou à donner tes
+                                    identifiants.</p>
+                                <ul>
+                                    <li><strong>Signes :</strong> urgence, fautes, expéditeur étrange, lien différent du
+                                        vrai site.</li>
+                                    <li><strong>Protection :</strong> survoler le lien avant de cliquer, ne jamais
+                                        donner son mot de passe par message, aller sur le site officiel.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <button class="btn btn-ghost flip-btn" type="button" aria-expanded="false">Voir comment ça
+                            marche</button>
+                    </div>
+
+                    <div class="flip" data-flip>
+                        <div class="flip-inner">
+                            <div class="flip-face flip-front">
+                                <h3><img class="ico" src="img/icones/virus.svg" alt="" width="24" height="24">Les logiciels malveillants</h3>
+                                <p>Des programmes conçus pour nuire, aussi appelés malwares.</p>
+                            </div>
+                            <div class="flip-face flip-back">
+                                <h3><img class="ico" src="img/icones/virus.svg" alt="" width="24" height="24">Les logiciels malveillants</h3>
+                                <p>Virus, ransomwares (qui chiffrent tes fichiers contre une rançon), spywares (qui
+                                    espionnent). Ils arrivent souvent par une pièce jointe ou un téléchargement douteux.
+                                </p>
+                                <ul>
+                                    <li><strong>Protection :</strong> télécharger sur les sites officiels, faire les
+                                        mises à jour, utiliser un antivirus, faire des sauvegardes.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <button class="btn btn-ghost flip-btn" type="button" aria-expanded="false">Voir comment ça
+                            marche</button>
+                    </div>
+
+                    <div class="flip" data-flip>
+                        <div class="flip-inner">
+                            <div class="flip-face flip-front">
+                                <h3><img class="ico" src="img/icones/cadenas.svg" alt="" width="24" height="24">La force brute</h3>
+                                <p>Un programme qui essaie des mots de passe jusqu'à trouver le bon.</p>
+                            </div>
+                            <div class="flip-face flip-back">
+                                <h3><img class="ico" src="img/icones/cadenas.svg" alt="" width="24" height="24">La force brute</h3>
+                                <p>Le programme teste des milliers de combinaisons. Plus un mot de passe est court et
+                                    simple, plus c'est rapide.</p>
+                                <ul>
+                                    <li><strong>Protection utilisateur :</strong> un mot de passe long, différent pour
+                                        chaque accès, et la double authentification.</li>
+                                    <li><strong>Protection du site :</strong> limiter le nombre d'essais de connexion.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <button class="btn btn-ghost flip-btn" type="button" aria-expanded="false">Voir comment ça
+                            marche</button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="reperer">
+            <div class="container">
+                <h2 id="reperer"><img class="ico-titre" src="img/icones/loupe.svg" alt="" width="24" height="24">Repérer un message de phishing</h2>
+                <figure>
+                    <div class="figure-box">
+                        <svg class="schema" viewBox="0 0 420 280" role="img" aria-labelledby="piege-titre piege-desc">
+                            <title id="piege-titre">Le chemin d'une attaque de phishing</title>
+                            <desc id="piege-desc">1. L'attaquant envoie un faux message. 2. Tu cliques sur le lien. 3. Un
+                                faux site imite le vrai. 4. Ce que tu y tapes part chez l'attaquant, qui recommence. Pour
+                                casser la boucle : ne clique pas, ouvre toi-même le site officiel.</desc>
+                            <defs>
+                                <marker id="pointe-piege" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7"
+                                    orient="auto-start-reverse">
+                                    <path class="pointe" d="M1 1L9 5L1 9z" />
+                                </marker>
+                            </defs>
+                            <rect class="boite" x="15" y="20" width="150" height="58" rx="12" />
+                            <text x="90" y="46" text-anchor="middle">1. Faux message</text>
+                            <text class="doux" x="90" y="65" text-anchor="middle">SMS ou courriel piégé</text>
+                            <rect class="boite" x="255" y="20" width="150" height="58" rx="12" />
+                            <text x="330" y="46" text-anchor="middle">2. Tu cliques</text>
+                            <text class="doux" x="330" y="65" text-anchor="middle">sur le lien du message</text>
+                            <rect class="boite" x="255" y="200" width="150" height="58" rx="12" />
+                            <text x="330" y="226" text-anchor="middle">3. Faux site</text>
+                            <text class="doux" x="330" y="245" text-anchor="middle">copie du vrai site</text>
+                            <rect class="boite" x="15" y="200" width="150" height="58" rx="12" />
+                            <text x="90" y="226" text-anchor="middle">4. Données volées</text>
+                            <text class="doux" x="90" y="245" text-anchor="middle">mot de passe, carte</text>
+                            <path class="fleche" d="M167 49H253" marker-end="url(#pointe-piege)" />
+                            <path class="fleche" d="M330 80V198" marker-end="url(#pointe-piege)" />
+                            <path class="fleche" d="M253 229H167" marker-end="url(#pointe-piege)" />
+                            <path class="fleche" d="M90 198V80" marker-end="url(#pointe-piege)" />
+                            <text class="num" x="210" y="132" text-anchor="middle">Pour casser la boucle :</text>
+                            <text class="doux" x="210" y="152" text-anchor="middle">ne clique pas, ouvre toi-même</text>
+                            <text class="doux" x="210" y="170" text-anchor="middle">le site officiel</text>
+                        </svg>
+                    </div>
+                    <figcaption>Un phishing ne marche que si tu cliques : c'est l'étape 2 qu'il faut bloquer.</figcaption>
+                </figure>
+                <div class="prose">
+                    <p>Voici un message fictif, avec les quatre signes à chercher.</p>
+                </div>
+
+                <figure>
+                    <div class="mail" role="group" aria-label="Exemple fictif de message de phishing">
+                        <p class="mail-ligne"><span class="mail-label">De</span> Service Client &lt;support@<mark
+                                class="repere">livraison-express-verif.example<span class="repere-n">1</span></mark>&gt;
+                        </p>
+                        <p class="mail-ligne"><span class="mail-label">Objet</span> <mark class="repere">URGENT : colis
+                                bloqué<span class="repere-n">2</span></mark></p>
+                        <p class="mail-corps"><mark class="repere">Bonjour cher client, votre colis ne peut pas etre
+                                livre.<span class="repere-n">3</span></mark> Confirmez votre adresse et payez 1,99 €
+                            avant ce soir : <mark class="repere">http://livraison-express-verif.example/paiement<span
+                                    class="repere-n">4</span></mark></p>
+                    </div>
+                    <figcaption>Message et adresses inventés pour l'exemple.</figcaption>
+                </figure>
+
+                <ol class="legende">
+                    <li><strong>L'expéditeur.</strong> L'adresse ne correspond pas clairement à l'organisation qu'elle
+                        prétend être.</li>
+                    <li><strong>L'urgence.</strong> On veut que tu agisses vite, sans réfléchir.</li>
+                    <li><strong>Le ton et les fautes.</strong> « Cher client » et des fautes : le message est générique
+                        et mal écrit.</li>
+                    <li><strong>Le lien.</strong> Il ne mène pas vers le site officiel. Survole-le toujours avant de
+                        cliquer.</li>
+                </ol>
+
+                <h3><img class="ico" src="img/icones/de.svg" alt="" width="24" height="24">Quiz : phishing ou message légitime ?</h3>
+                <p class="prose">Sept messages fictifs, dans un ordre aléatoire. À toi de décider.</p>
+
+                <div class="widget">
+                    <noscript>
+                        <p>Activez JavaScript pour faire le quiz.</p>
+                    </noscript>
+                    <div id="quiz-zone" hidden>
+                        <p class="game-meta" id="quiz-progression"></p>
+                        <p class="contexte" id="quiz-contexte" hidden></p>
+                        <div class="mail" id="quiz-message"></div>
+                        <div class="choices duo" id="quiz-choix"></div>
+                        <div class="feedback" id="quiz-retour" aria-live="polite" hidden></div>
+                        <div class="game-actions"><button class="btn" type="button" id="quiz-suivant" hidden>Message
+                                suivant</button></div>
+                    </div>
+                    <div id="quiz-fin" hidden>
+                        <h3 id="quiz-score"></h3>
+                        <p id="quiz-bilan"></p>
+                        <button class="btn" type="button" id="quiz-rejouer">Rejouer</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="force-titre">
+            <div class="container">
+                <h2 id="force-titre"><img class="ico-titre" src="img/icones/cle.svg" alt="" width="24" height="24">Combien de temps pour deviner un mot de passe ?</h2>
+                <div class="prose">
+                    <p>Une attaque par force brute essaie toutes les combinaisons, une par une. Tape un mot de passe
+                        <strong>inventé</strong> pour voir combien de temps il résisterait. Ajoute un caractère, puis un
+                        autre : le temps explose.</p>
+                </div>
+
+                <div class="widget">
+                    <p class="note"><strong>Jamais ton vrai mot de passe</strong>, ni ici ni ailleurs. Rien n'est
+                        envoyé : le calcul se fait dans ton navigateur.</p>
+                    <div class="force-champ">
+                        <label for="mdp">Mot de passe inventé</label>
+                        <input type="text" id="mdp" autocomplete="off" spellcheck="false" placeholder="par exemple chat2024">
+                    </div>
+                    <ul class="force-criteres" id="force-criteres" aria-label="Ce que contient le mot de passe"></ul>
+                    <div class="barre-fond force-jauge" id="force-jauge" aria-hidden="true"><span class="barre"></span></div>
+                    <p class="force-temps" id="force-temps" aria-live="polite">Commence à taper pour voir le résultat.</p>
+                    <p class="note">Hypothèse de calcul : un ordinateur puissant qui essaie 10 milliards de mots de
+                        passe par seconde, et un temps moyen (la moitié des combinaisons). Un mot du dictionnaire, un
+                        prénom ou une date sont trouvés bien plus vite : l'attaquant les essaie en premier.</p>
+                    <noscript>
+                        <p>Activez JavaScript pour tester un mot de passe.</p>
+                    </noscript>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="reflexes">
+            <div class="container">
+                <h2 id="reflexes"><img class="ico-titre" src="img/icones/bouclier-ok.svg" alt="" width="24" height="24">Les bons réflexes</h2>
+                <div class="prose">
+                    <p>Les règles ne sont pas les mêmes pour celui qui utilise un site et pour celui qui le construit.
+                    </p>
+                </div>
+
+                <div id="onglets">
+                    <section class="panneau" id="panneau-utilisateur" data-titre="Utilisateur">
+                        <h3 class="panneau-titre">Pour l'utilisateur</h3>
+                        <ul class="regles">
+                            <li><img class="ico" src="img/icones/maj.svg" alt="" width="24" height="24"><strong>Faire les mises à jour</strong> des appareils et des logiciels, qui corrigent
+                                des failles connues.</li>
+                            <li><img class="ico" src="img/icones/cle.svg" alt="" width="24" height="24"><strong>Choisir un mot de passe long</strong> (12 caractères au minimum) et différent
+                                pour chaque accès. Un gestionnaire de mots de passe aide à les retenir.</li>
+                            <li><img class="ico" src="img/icones/telephone.svg" alt="" width="24" height="24"><strong>Activer la double authentification</strong> : un mot de passe volé ne suffit
+                                plus.</li>
+                            <li><img class="ico" src="img/icones/enveloppe.svg" alt="" width="24" height="24"><strong>Se méfier des messages</strong> : survoler le lien avant de cliquer, ne pas
+                                ouvrir de pièce jointe inattendue.</li>
+                            <li><img class="ico" src="img/icones/sauvegarde.svg" alt="" width="24" height="24"><strong>Faire des sauvegardes</strong> régulières de ses fichiers.</li>
+                            <li><img class="ico" src="img/icones/wifi.svg" alt="" width="24" height="24"><strong>Rester prudent sur les Wi-Fi publics</strong> et vérifier que l'adresse commence
+                                par https.</li>
+                        </ul>
+                    </section>
+
+                    <section class="panneau" id="panneau-developpeur" data-titre="Développeur">
+                        <h3 class="panneau-titre">Pour le développeur</h3>
+                        <ul class="regles">
+                            <li><img class="ico" src="img/icones/cadenas.svg" alt="" width="24" height="24"><strong>Utiliser HTTPS</strong> pour chiffrer les échanges entre le visiteur et le site.
+                            </li>
+                            <li><img class="ico" src="img/icones/oeil-barre.svg" alt="" width="24" height="24"><strong>Ne jamais publier de mot de passe ni de clé d'API</strong> dans le code, surtout
+                                dans un dépôt public.</li>
+                            <li><img class="ico" src="img/icones/filtre.svg" alt="" width="24" height="24"><strong>Ne jamais faire confiance aux données saisies</strong> : les valider avant de
+                                les utiliser.</li>
+                            <li><img class="ico" src="img/icones/diese.svg" alt="" width="24" height="24"><strong>Ne jamais stocker les mots de passe en clair</strong> : on les hache, avec un
+                                algorithme adapté comme Argon2 ou bcrypt.</li>
+                            <li><img class="ico" src="img/icones/chrono.svg" alt="" width="24" height="24"><strong>Limiter les essais de connexion</strong>, pour freiner la force brute.</li>
+                            <li><img class="ico" src="img/icones/paquet.svg" alt="" width="24" height="24"><strong>Garder les bibliothèques à jour</strong>, car une faille connue dans une
+                                bibliothèque devient une faille de ton site.</li>
+                        </ul>
+                    </section>
+                </div>
+
+            </div>
+        </section>
+
+        <nav class="page-nav" aria-label="Navigation entre les sujets">
+            <div class="container page-nav-inner">
+                <a class="page-nav-lien" rel="prev" href="standards.html"><span class="page-nav-sens"><span
+                            aria-hidden="true">←</span> Précédent</span><span class="page-nav-nom">Standards</span></a>
+                <a class="page-nav-lien page-nav-suivant" rel="next" href="sources.html"><span
+                        class="page-nav-sens">Suivant <span aria-hidden="true">→</span></span><span
+                        class="page-nav-nom">Sources</span></a>
+            </div>
+        </nav>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>Les sources de cette page sont listées sur la <a href="sources.html">page Sources</a>.</p>
+            <p>WebAtlas, par Laurent Beckman, 2026.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

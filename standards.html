@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Les standards du web · WebAtlas</title>
+    <meta name="description"
+        content="Qui écrit les règles du web (W3C, WHATWG, IETF, Ecma, ICANN) et ce qui arriverait sans elles.">
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%235E7F6B'/%3E%3C/svg%3E">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Jost:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js"></script>
+    <script src="js/standards.js" defer></script>
+</head>
+
+<body>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="logo" href="index.html">WebAtlas</a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+            <nav class="site-nav" id="menu" aria-label="Navigation principale">
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="timeline.html">Timeline</a></li>
+                    <li><a href="urls.html">URL</a></li>
+                    <li><a href="domaines.html">Domaines</a></li>
+                    <li><a href="standards.html" aria-current="page">Standards</a></li>
+                    <li><a href="securite.html">Sécurité</a></li>
+                    <li><a href="sources.html">Sources</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="contenu" tabindex="-1">
+
+        <div class="container page-title">
+            <h1>Les standards du web</h1>
+            <p class="lead">Pourquoi une même page s'affiche-t-elle de la même façon sur Chrome, Firefox et Safari ?
+                Parce que tout le monde suit les mêmes règles : les standards.</p>
+            <svg class="illu page-illu" viewBox="0 0 160 130" aria-hidden="true" focusable="false">
+                <rect class="trait sauge" x="12" y="52" width="48" height="48" rx="10" />
+                <path class="trait" d="M26 76l8 8 14-16" />
+                <circle class="trait sable" cx="92" cy="76" r="24" />
+                <path class="trait blanc" d="M118 100l20-34 20 34z" />
+                <path class="trait fin" d="M8 105H152" />
+            </svg>
+        </div>
+
+        <section class="section" aria-labelledby="qui">
+            <div class="container">
+                <h2 id="qui"><img class="ico-titre" src="img/icones/personnes.svg" alt="" width="24" height="24">Qui écrit les règles ?</h2>
+                <div class="prose">
+                    <p>Aucun organisme ne décide seul : chacun s'occupe d'un morceau du web.</p>
+                </div>
+                <div class="card-grid">
+
+                    <article class="org">
+                        <p class="org-sigle"><img class="ico ico-org" src="img/icones/page.svg" alt="" width="24" height="24">W3C</p>
+                        <h3>World Wide Web Consortium</h3>
+                        <p>Fondé en 1994 par Tim Berners-Lee. Il écrit une grande partie des règles du web : le CSS,
+                            l'accessibilité (les règles WCAG) ou encore le XML.</p>
+                        <p>C'est lui qui a publié HTML5 comme recommandation officielle en 2014.</p>
+                    </article>
+
+                    <article class="org">
+                        <p class="org-sigle"><img class="ico ico-org" src="img/icones/balise.svg" alt="" width="24" height="24">WHATWG</p>
+                        <h3>Web Hypertext Application Technology Working Group</h3>
+                        <p>Créé en 2004 par des personnes travaillant pour Apple, Mozilla et Opera. Il maintient le HTML
+                            « Living Standard », un HTML qui évolue en continu.</p>
+                        <p>Depuis 2019, le W3C et le WHATWG travaillent sur une seule version du HTML.</p>
+                    </article>
+
+                    <article class="org">
+                        <p class="org-sigle"><img class="ico ico-org" src="img/icones/reseau.svg" alt="" width="24" height="24">IETF</p>
+                        <h3>Internet Engineering Task Force</h3>
+                        <p>Il écrit les règles de communication d'Internet, appelées protocoles, dans des documents
+                            nommés RFC.</p>
+                        <p>Exemple : HTTP, le protocole qui transporte les pages web.</p>
+                    </article>
+
+                    <article class="org">
+                        <p class="org-sigle"><img class="ico ico-org" src="img/icones/accolades.svg" alt="" width="24" height="24">Ecma</p>
+                        <h3>Ecma International</h3>
+                        <p>Elle publie la norme ECMAScript, sur laquelle repose JavaScript.</p>
+                        <p>Les navigateurs la respectent pour qu'un même script fonctionne partout.</p>
+                    </article>
+
+                    <article class="org">
+                        <p class="org-sigle"><img class="ico ico-org" src="img/icones/globe.svg" alt="" width="24" height="24">ICANN</p>
+                        <h3>Internet Corporation for Assigned Names and Numbers</h3>
+                        <p>Elle coordonne le système des noms de domaine et des adresses IP.</p>
+                        <p>Voir la page <a href="domaines.html">Domaines</a>.</p>
+                    </article>
+
+                </div>
+
+                <h3 class="titre-jeu"><img class="ico" src="img/icones/de.svg" alt="" width="24" height="24">Jeu : qui écrit cette règle ?</h3>
+                <p class="prose">Une technologie du web, cinq organismes. Lequel écrit ses règles ?</p>
+                <div class="widget">
+                    <noscript>
+                        <p>Activez JavaScript pour jouer.</p>
+                    </noscript>
+                    <div id="orga-zone" hidden>
+                        <p class="game-meta" id="orga-progression"></p>
+                        <p class="scenario" id="orga-question"></p>
+                        <div class="choices orgas" id="orga-choix"></div>
+                        <div class="feedback" id="orga-retour" aria-live="polite" hidden></div>
+                        <div class="game-actions"><button class="btn" type="button" id="orga-suivant" hidden>Question
+                                suivante</button></div>
+                    </div>
+                    <div id="orga-fin" hidden>
+                        <h3 id="orga-score"></h3>
+                        <p id="orga-message"></p>
+                        <button class="btn" type="button" id="orga-rejouer">Rejouer</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="sans">
+            <div class="container">
+                <h2 id="sans"><img class="ico-titre" src="img/icones/alerte.svg" alt="" width="24" height="24">Et sans standards ?</h2>
+                <div class="prose">
+                    <p>Chaque navigateur interpréterait le code à sa façon. Il faudrait écrire une version du site par
+                        navigateur, et certains sites ne marcheraient que sur certains navigateurs.</p>
+                    <p>Ce n'est pas qu'une hypothèse : c'est ce qui s'est passé pendant la « guerre des navigateurs », à
+                        la fin des années 1990, entre Netscape et Internet Explorer.</p>
+                    <p>Déplace le curseur pour voir la même page dans deux navigateurs.</p>
+                </div>
+
+                <div class="widget demo" id="demo" data-niveau="0">
+                    <div class="curseur">
+                        <label for="niveau">Respect des standards : <strong id="niveau-nom">Avec les
+                                standards</strong></label>
+                        <input type="range" id="niveau" min="0" max="2" step="1" value="0"
+                            aria-describedby="niveau-texte">
+                        <div class="curseur-reperes" aria-hidden="true"><span>Avec</span><span>Peu
+                                respectés</span><span>Aucun</span></div>
+                    </div>
+
+                    <div class="demo-frames">
+                        <div class="frame frame-a">
+                            <div class="frame-barre"><i></i><i></i><i></i> Navigateur A</div>
+                            <div class="mini" aria-hidden="true">
+                                <ul class="mini-menu">
+                                    <li>Accueil</li>
+                                    <li>Articles</li>
+                                    <li>Contact</li>
+                                </ul>
+                                <div class="mini-corps">
+                                    <div class="mini-texte">
+                                        <h4>Bienvenue</h4>
+                                        <p>Une petite page avec un menu, un texte, un bouton et une image.</p>
+                                        <span class="mini-btn">Lire la suite</span>
+                                    </div>
+                                    <div class="mini-image"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="frame frame-b">
+                            <div class="frame-barre"><i></i><i></i><i></i> Navigateur B</div>
+                            <div class="mini" aria-hidden="true">
+                                <ul class="mini-menu">
+                                    <li>Accueil</li>
+                                    <li>Articles</li>
+                                    <li>Contact</li>
+                                </ul>
+                                <div class="mini-corps">
+                                    <div class="mini-texte">
+                                        <h4>Bienvenue</h4>
+                                        <p>Une petite page avec un menu, un texte, un bouton et une image.</p>
+                                        <span class="mini-btn">Lire la suite</span>
+                                    </div>
+                                    <div class="mini-image"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p id="niveau-texte" aria-live="polite">Les deux navigateurs suivent les mêmes règles : la page
+                        s'affiche de la même façon partout.</p>
+                    <p class="note">Illustration simplifiée : elle ressemble aux problèmes de la fin des années 1990 et
+                        ne reproduit pas un navigateur précis.</p>
+                    <noscript>
+                        <p>Activez JavaScript pour déplacer le curseur.</p>
+                    </noscript>
+                </div>
+
+                <div class="callout">
+                    <p><strong>À retenir.</strong> Un standard est une règle écrite et publique, que les navigateurs et
+                        les développeurs suivent. Grâce à elle, le même code donne la même page partout.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <nav class="page-nav" aria-label="Navigation entre les sujets">
+            <div class="container page-nav-inner">
+                <a class="page-nav-lien" rel="prev" href="domaines.html"><span class="page-nav-sens"><span
+                            aria-hidden="true">←</span> Précédent</span><span class="page-nav-nom">Domaines</span></a>
+                <a class="page-nav-lien page-nav-suivant" rel="next" href="securite.html"><span
+                        class="page-nav-sens">Suivant <span aria-hidden="true">→</span></span><span
+                        class="page-nav-nom">Sécurité</span></a>
+            </div>
+        </nav>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>Les sources de cette page sont listées sur la <a href="sources.html">page Sources</a>.</p>
+            <p>WebAtlas, par Laurent Beckman, 2026.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

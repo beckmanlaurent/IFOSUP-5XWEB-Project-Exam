@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Les URL · WebAtlas</title>
+    <meta name="description"
+        content="Comment lire une adresse web morceau par morceau, ce que signifient les codes 200, 404, 500, 301 et 302, avec un jeu pour s'entraîner.">
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%235E7F6B'/%3E%3C/svg%3E">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Jost:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js"></script>
+    <script src="js/url.js" defer></script>
+</head>
+
+<body>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="logo" href="index.html">WebAtlas</a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+            <nav class="site-nav" id="menu" aria-label="Navigation principale">
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="timeline.html">Timeline</a></li>
+                    <li><a href="urls.html" aria-current="page">URL</a></li>
+                    <li><a href="domaines.html">Domaines</a></li>
+                    <li><a href="standards.html">Standards</a></li>
+                    <li><a href="securite.html">Sécurité</a></li>
+                    <li><a href="sources.html">Sources</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="contenu" tabindex="-1">
+
+        <div class="container page-title">
+            <h1>Les URL</h1>
+            <p class="lead">Une URL, c'est l'adresse d'une page, comme une adresse postale. Apprenons à la lire de
+                gauche à droite, morceau par morceau.</p>
+            <svg class="illu page-illu" viewBox="0 0 160 130" aria-hidden="true" focusable="false">
+                <rect class="trait sable" x="14" y="22" width="132" height="92" rx="12" />
+                <path class="trait" d="M14 46H146" />
+                <rect class="trait blanc" x="30" y="28" width="100" height="12" rx="6" />
+                <path class="seg" style="stroke:var(--accent)" d="M38 34h14" />
+                <path class="seg" style="stroke:var(--chaud)" d="M58 34h26" />
+                <path class="seg" style="stroke:var(--accent-fort)" d="M90 34h18" />
+                <path class="trait fin" d="M30 64H110M30 78H130M30 92H90" />
+            </svg>
+        </div>
+
+        <section class="section" aria-labelledby="decomposer">
+            <div class="container">
+                <h2 id="decomposer"><img class="ico-titre" src="img/icones/lien.svg" alt="" width="24" height="24">Lire une adresse morceau par morceau</h2>
+                <p class="prose">Voici une vraie adresse, découpée. Clique sur un morceau (ou survole-le) pour savoir à
+                    quoi il sert.</p>
+
+                <div class="widget">
+                    <div class="url-parts" id="url-parts" role="group" aria-label="Morceaux de l'adresse"></div>
+                    <div class="url-explain" id="url-explication" aria-live="polite">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                    <noscript>
+                        <p>Activez JavaScript pour explorer l'adresse. En résumé : le schéma (<code>https://</code>), le
+                            domaine (<code>fr.wikipedia.org</code>), le chemin
+                            (<code>/wiki/Conception_de_site_web</code>), les paramètres (<code>?id=42</code>) et l'ancre
+                            (<code>#Premiers_pas</code>).</p>
+                    </noscript>
+                </div>
+
+                <div class="widget">
+                    <h3><img class="ico" src="img/icones/lien.svg" alt="" width="24" height="24">À toi : colle une adresse</h3>
+                    <p>Copie l'adresse d'une page que tu utilises (dans la barre du navigateur), colle-la ici, et le
+                        site la découpe avec les mêmes couleurs.</p>
+                    <form class="url-form" id="url-form">
+                        <label for="url-saisie">Adresse à découper</label>
+                        <div class="url-form-ligne">
+                            <input type="text" id="url-saisie" inputmode="url" autocomplete="off" spellcheck="false"
+                                placeholder="https://www.youtube.com/results?search_query=html#filtres">
+                            <button class="btn" type="submit">Découper</button>
+                        </div>
+                    </form>
+                    <p class="url-erreur" id="url-erreur" role="alert" hidden></p>
+                    <div id="url-resultat" aria-live="polite" hidden>
+                        <p class="note" id="url-info" hidden></p>
+                        <div class="url-parts" id="url-perso"></div>
+                        <ul class="url-legende" id="url-legende"></ul>
+                    </div>
+                    <noscript>
+                        <p>Activez JavaScript pour découper ta propre adresse.</p>
+                    </noscript>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="codes">
+            <div class="container">
+                <h2 id="codes"><img class="ico-titre" src="img/icones/serveur.svg" alt="" width="24" height="24">Ce que répond le serveur</h2>
+                <div class="prose">
+                    <p>Quand tu ouvres une adresse, ton navigateur envoie une requête au serveur. Le serveur répond
+                        toujours par un code à trois chiffres, avant même d'envoyer la page.</p>
+                </div>
+
+                <figure>
+                    <div class="figure-box">
+                        <svg class="schema" viewBox="0 0 420 300" role="img" aria-labelledby="schema-titre schema-desc">
+                            <title id="schema-titre">Échange entre un navigateur et un serveur</title>
+                            <desc id="schema-desc">Le navigateur envoie une requête au serveur, puis le serveur répond
+                                avec un code et la page.</desc>
+                            <defs>
+                                <marker id="pointe" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7"
+                                    markerHeight="7" orient="auto-start-reverse">
+                                    <path class="pointe" d="M1 1L9 5L1 9z" />
+                                </marker>
+                            </defs>
+                            <rect class="boite" x="110" y="10" width="200" height="56" rx="12" />
+                            <text x="210" y="34" text-anchor="middle">Navigateur</text>
+                            <text class="doux" x="210" y="54" text-anchor="middle">le tien</text>
+                            <rect class="boite" x="110" y="234" width="200" height="56" rx="12" />
+                            <text x="210" y="258" text-anchor="middle">Serveur</text>
+                            <text class="doux" x="210" y="278" text-anchor="middle">fr.wikipedia.org</text>
+                            <path class="fleche" d="M165 68V230" marker-end="url(#pointe)" />
+                            <path class="fleche" d="M255 232V70" marker-end="url(#pointe)" />
+                            <text x="152" y="140" text-anchor="end">1. Requête</text>
+                            <text class="doux" x="152" y="160" text-anchor="end">« je veux cette page »</text>
+                            <text x="268" y="140">2. Réponse</text>
+                            <text class="doux" x="268" y="160">un code, puis la page</text>
+                        </svg>
+                    </div>
+                    <figcaption>Chaque visite d'une page commence par une requête et une réponse.</figcaption>
+                </figure>
+
+                <div class="table-wrap">
+                    <table>
+                        <caption class="sr-only">Les cinq codes à connaître</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Code</th>
+                                <th scope="col">Ce que ça veut dire</th>
+                                <th scope="col">D'où vient le souci ?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><img class="ico" src="img/icones/ok.svg" alt="" width="24" height="24">200</td>
+                                <td>OK : la page est trouvée et envoyée.</td>
+                                <td>Aucun, tout va bien.</td>
+                            </tr>
+                            <tr>
+                                <td><img class="ico" src="img/icones/question.svg" alt="" width="24" height="24">404</td>
+                                <td>Not Found : rien à cette adresse.</td>
+                                <td>Adresse erronée ou page supprimée.</td>
+                            </tr>
+                            <tr>
+                                <td><img class="ico" src="img/icones/serveur-ko.svg" alt="" width="24" height="24">500</td>
+                                <td>Internal Server Error : le serveur a eu un problème.</td>
+                                <td>Le serveur, pas le visiteur.</td>
+                            </tr>
+                            <tr>
+                                <td><img class="ico" src="img/icones/fleche-droite.svg" alt="" width="24" height="24">301</td>
+                                <td>Moved Permanently : la page a déménagé pour toujours.</td>
+                                <td>Aucun, c'est une redirection.</td>
+                            </tr>
+                            <tr>
+                                <td><img class="ico" src="img/icones/aller-retour.svg" alt="" width="24" height="24">302</td>
+                                <td>Found : la page est ailleurs pour le moment.</td>
+                                <td>Aucun, c'est une redirection.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="callout">
+                    <p>Le premier chiffre donne la famille du code : <strong>2</strong> pour un succès,
+                        <strong>3</strong> pour une redirection, <strong>4</strong> pour une erreur venant de la
+                        demande, <strong>5</strong> pour une erreur côté serveur.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="redirections">
+            <div class="container prose">
+                <h2 id="redirections"><img class="ico-titre" src="img/icones/aller-retour.svg" alt="" width="24" height="24">Les redirections : 301 et 302</h2>
+                <p>Une redirection envoie automatiquement le visiteur d'une adresse vers une autre. La différence tient
+                    à la durée.</p>
+                <p><strong>301, déménagement définitif.</strong> L'ancienne adresse ne sert plus. Les navigateurs et les
+                    moteurs de recherche, comme Google, retiennent la nouvelle adresse.</p>
+                <p><strong>302, déménagement temporaire.</strong> L'ancienne adresse reste la bonne, la nouvelle ne sert
+                    que pour un temps, par exemple pendant une maintenance.</p>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="jeu-titre">
+            <div class="container">
+                <h2 id="jeu-titre"><img class="ico-titre" src="img/icones/de.svg" alt="" width="24" height="24">Jeu : devine le code</h2>
+                <p class="prose">Une situation, cinq codes possibles. Lequel le serveur renvoie-t-il ?</p>
+
+                <div class="widget">
+                    <noscript>
+                        <p>Activez JavaScript pour jouer.</p>
+                    </noscript>
+                    <div id="jeu-zone" hidden>
+                        <p class="game-meta" id="jeu-progression"></p>
+                        <p class="scenario" id="jeu-scenario"></p>
+                        <div class="choices codes" id="jeu-choix"></div>
+                        <div class="feedback" id="jeu-retour" aria-live="polite" hidden></div>
+                        <div class="game-actions"><button class="btn" type="button" id="jeu-suivant" hidden>Question
+                                suivante</button></div>
+                    </div>
+                    <div id="jeu-fin" hidden>
+                        <h3 id="jeu-score"></h3>
+                        <p id="jeu-message"></p>
+                        <button class="btn" type="button" id="jeu-rejouer">Rejouer</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <nav class="page-nav" aria-label="Navigation entre les sujets">
+            <div class="container page-nav-inner">
+                <a class="page-nav-lien" rel="prev" href="timeline.html"><span class="page-nav-sens"><span
+                            aria-hidden="true">←</span> Précédent</span><span class="page-nav-nom">Timeline</span></a>
+                <a class="page-nav-lien page-nav-suivant" rel="next" href="domaines.html"><span
+                        class="page-nav-sens">Suivant <span aria-hidden="true">→</span></span><span
+                        class="page-nav-nom">Domaines</span></a>
+            </div>
+        </nav>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>Les sources de cette page sont listées sur la <a href="sources.html">page Sources</a>.</p>
+            <p>WebAtlas, par Laurent Beckman, 2026.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

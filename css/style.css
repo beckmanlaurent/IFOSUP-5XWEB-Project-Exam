@@ -1,0 +1,821 @@
+/* ==========================================================
+   Site de veille · style.css
+   Identité : minimalisme scandinave, vert sauge
+   Sommaire : 1 Variables · 2 Base · 3 Menu · 4 Mise en page
+   5 Accueil · 6 Cartes · 7 Composants · 8 Pied de page
+   9 Responsive · 10 Mouvement réduit
+   ========================================================== */
+
+/* 1. VARIABLES : un seul endroit pour changer l'identité */
+:root {
+  --fond: #F7F5F0;          /* blanc cassé chaud */
+  --surface: #FFFFFF;       /* cartes */
+  --texte: #2B2B2B;         /* anthracite */
+  --texte-doux: #5F5F5F;    /* texte secondaire */
+  --ligne: #E4E0D6;         /* bordures fines */
+  --accent: #5E7F6B;        /* vert sauge : fonds, traits, schémas */
+  --accent-fort: #3F5A4B;   /* sauge foncé : liens, boutons (contraste lisible) */
+  --accent-pale: #E6EDE7;   /* sauge très clair : survols, encadrés */
+  --ok: #4F7A5C;
+  --ok-pale: #E3EEE6;
+  --ko: #A5524A;
+  --ko-pale: #F4E4E1;
+
+  --police-titre: "Jost", "Century Gothic", "Segoe UI", sans-serif;
+  --police-texte: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
+
+  --rayon: 12px;
+  --largeur: 68rem;
+  --lecture: 40rem;         /* ~65 caractères par ligne */
+  --espace: clamp(1.25rem, 4vw, 2rem);
+}
+
+/* 2. BASE */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--fond);
+  color: var(--texte);
+  font-family: var(--police-texte);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+
+h1, h2, h3 {
+  font-family: var(--police-titre);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.6em;
+}
+h1 { font-size: clamp(2.25rem, 6vw, 3.75rem); font-weight: 400; }
+h2 { font-size: clamp(1.5rem, 3.5vw, 2rem); margin-top: 2.5em; }
+h3 { font-size: 1.25rem; }
+
+p { margin: 0 0 1.1em; }
+img, svg { max-width: 100%; height: auto; }
+
+a { color: var(--accent-fort); text-underline-offset: 0.2em; }
+a:hover { color: var(--texte); }
+
+:focus-visible {
+  outline: 3px solid var(--accent-fort);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  background: var(--accent-fort);
+  color: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: var(--rayon);
+  z-index: 100;
+}
+.skip-link:focus { top: 1rem; }
+
+/* 3. MENU : identique sur toutes les pages */
+.site-header {
+  background: var(--fond);
+  border-bottom: 1px solid var(--ligne);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.header-inner {
+  max-width: var(--largeur);
+  margin: 0 auto;
+  padding: 0.75rem var(--espace);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+}
+.logo {
+  font-family: var(--police-titre);
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--texte);
+  text-decoration: none;
+}
+.site-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.5rem;
+}
+.site-nav a {
+  display: block;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  color: var(--texte-doux);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+.site-nav a:hover { background: var(--accent-pale); color: var(--texte); }
+.site-nav a[aria-current="page"] {
+  background: var(--accent-pale);
+  color: var(--accent-fort);
+  font-weight: 600;
+}
+
+/* Bouton du menu : visible seulement si JavaScript tourne (classe "js" ajoutée par main.js) */
+.nav-toggle {
+  display: none;
+  font: inherit;
+  font-size: 0.95rem;
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--ligne);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--texte);
+  cursor: pointer;
+}
+
+/* 4. MISE EN PAGE */
+main { display: block; }
+.container {
+  max-width: var(--largeur);
+  margin: 0 auto;
+  padding: 0 var(--espace);
+}
+.section { padding: clamp(2.5rem, 7vw, 5rem) 0; }
+.section + .section { border-top: 1px solid var(--ligne); }
+.section > .container > h2:first-child { margin-top: 0; }
+.prose { max-width: var(--lecture); }
+.lead { font-size: 1.2rem; color: var(--texte-doux); max-width: var(--lecture); }
+
+.page-title { padding: clamp(2.5rem, 8vw, 5rem) 0 1rem; }
+.page-title h1 { margin-bottom: 0.4em; }
+
+/* 5. ACCUEIL : le seul moment animé du site */
+.hero { padding: clamp(3.5rem, 12vw, 8rem) 0 clamp(2.5rem, 8vw, 5rem); }
+.hero h1 { max-width: 14ch; }
+.hero .lead { margin-bottom: 1.5rem; }
+.hero > .container > * { animation: apparition 0.7s ease both; }
+.hero > .container > :nth-child(2) { animation-delay: 0.12s; }
+.hero > .container > :nth-child(3) { animation-delay: 0.24s; }
+@keyframes apparition {
+  from { opacity: 0; transform: translateY(0.75rem); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* 6. CARTES : une par sujet sur l'accueil */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1rem;
+}
+.card {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--ligne);
+  border-radius: var(--rayon);
+  padding: 1.5rem;
+  color: var(--texte);
+  text-decoration: none;
+  transition: border-color 0.2s;
+}
+.card:hover { border-color: var(--accent); color: var(--texte); }
+.card svg { width: 2.5rem; height: 2.5rem; margin-bottom: 1rem; stroke: var(--accent); }
+.card h3 { margin-bottom: 0.3em; }
+.card p { margin: 0; color: var(--texte-doux); font-size: 0.97rem; }
+
+/* 7. COMPOSANTS PARTAGÉS (réutilisés par les pages interactives) */
+.btn {
+  display: inline-block;
+  font: inherit;
+  font-weight: 500;
+  padding: 0.7rem 1.4rem;
+  border: 1px solid var(--accent-fort);
+  border-radius: 999px;
+  background: var(--accent-fort);
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn:hover { background: var(--texte); border-color: var(--texte); color: #fff; }
+.btn-ghost { background: transparent; color: var(--accent-fort); }
+.btn-ghost:hover { background: var(--accent-pale); color: var(--accent-fort); border-color: var(--accent-fort); }
+
+figure { margin: 2rem 0; }
+figcaption { margin-top: 0.6rem; font-size: 0.9rem; color: var(--texte-doux); }
+.figure-box {
+  background: var(--surface);
+  border: 1px solid var(--ligne);
+  border-radius: var(--rayon);
+  padding: clamp(1rem, 3vw, 2rem);
+}
+
+.callout {
+  background: var(--accent-pale);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--rayon) var(--rayon) 0;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  max-width: var(--lecture);
+}
+.callout p:last-child { margin-bottom: 0; }
+
+/* Zone interactive (quiz, jeu, curseur...) */
+.widget {
+  background: var(--surface);
+  border: 1px solid var(--ligne);
+  border-radius: var(--rayon);
+  padding: clamp(1.25rem, 4vw, 2rem);
+  margin: 2rem 0;
+}
+
+/* Choix de réponse (quiz, jeu « devine le code ») */
+.choices { display: grid; gap: 0.6rem; margin: 1rem 0; }
+.choice {
+  font: inherit;
+  text-align: left;
+  padding: 0.8rem 1.1rem;
+  border: 1px solid var(--ligne);
+  border-radius: var(--rayon);
+  background: var(--fond);
+  color: var(--texte);
+  cursor: pointer;
+}
+.choice:hover:not(:disabled) { border-color: var(--accent); background: var(--accent-pale); }
+.choice.is-ok { background: var(--ok-pale); border-color: var(--ok); }
+.choice.is-ko { background: var(--ko-pale); border-color: var(--ko); }
+.choice:disabled { cursor: default; }
+.feedback { margin-top: 1rem; padding: 0.8rem 1rem; border-radius: var(--rayon); background: var(--accent-pale); }
+
+/* Tableau (sources, prix) : défile dans son cadre sur téléphone */
+.table-wrap { overflow-x: auto; border: 1px solid var(--ligne); border-radius: var(--rayon); background: var(--surface); }
+table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+th, td { text-align: left; padding: 0.8rem 1rem; border-bottom: 1px solid var(--ligne); vertical-align: top; }
+th { font-family: var(--police-titre); font-weight: 500; background: var(--accent-pale); }
+tr:last-child td { border-bottom: 0; }
+
+/* 8. PIED DE PAGE */
+.site-footer { border-top: 1px solid var(--ligne); padding: 2rem 0; color: var(--texte-doux); font-size: 0.9rem; }
+.site-footer p { margin: 0; }
+
+/* 9. RESPONSIVE : on conçoit pour le téléphone, puis on agrandit */
+@media (max-width: 48rem) {
+  .js .nav-toggle { display: inline-block; }
+  .js .site-nav { display: none; width: 100%; }
+  .js .site-nav.is-open { display: block; }
+  .site-nav ul { flex-direction: column; }
+  .site-nav a { border-radius: var(--rayon); }
+}
+
+/* 10. MOUVEMENT RÉDUIT : on respecte le réglage de l'utilisateur */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* 11. PAGE URL : décomposeur, schéma, tableau, jeu */
+[hidden] { display: none !important; }
+
+code {
+  font-family: ui-monospace, "SF Mono", Consolas, monospace;
+  font-size: 0.92em;
+  background: var(--accent-pale);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+}
+td:first-child { font-weight: 600; white-space: nowrap; }
+
+/* Une teinte par morceau d'URL (les couleurs servent ici à distinguer les morceaux) */
+[data-seg="1"] { --seg: #E6EDE7; --seg-fort: #5E7F6B; }
+[data-seg="2"] { --seg: #E3EAF1; --seg-fort: #5B7FA3; }
+[data-seg="3"] { --seg: #F2EAD8; --seg-fort: #A8874A; }
+[data-seg="4"] { --seg: #F0E2E0; --seg-fort: #A5524A; }
+[data-seg="5"] { --seg: #E8E4F0; --seg-fort: #7A6A9E; }
+
+.url-parts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  font-family: ui-monospace, "SF Mono", Consolas, monospace;
+  font-size: clamp(0.95rem, 2.8vw, 1.15rem);
+}
+.url-part {
+  font: inherit;
+  text-align: left;
+  padding: 0.55rem 0.75rem;
+  background: var(--seg);
+  color: var(--texte);
+  border: 1px solid transparent;
+  border-bottom: 3px solid var(--seg-fort);
+  border-radius: 8px;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+.url-part[aria-pressed="true"] { border-color: var(--seg-fort); font-weight: 700; }
+.url-explain {
+  margin-top: 1.25rem;
+  padding: 1rem 1.25rem;
+  background: var(--seg);
+  border-left: 4px solid var(--seg-fort);
+  border-radius: 0 var(--rayon) var(--rayon) 0;
+}
+.url-explain h3 { margin-bottom: 0.3em; }
+.url-explain p { margin: 0; max-width: var(--lecture); }
+
+/* Schéma requête / réponse */
+.schema { display: block; width: 100%; max-width: 26rem; margin: 0 auto; }
+.schema .boite { fill: var(--surface); stroke: var(--accent); stroke-width: 1.5; }
+.schema text { fill: var(--texte); font-family: var(--police-texte); font-size: 14px; }
+.schema .doux { fill: var(--texte-doux); font-size: 13px; }
+.schema .fleche { fill: none; stroke: var(--accent-fort); stroke-width: 1.5; }
+.schema .pointe { fill: var(--accent-fort); }
+
+/* Jeu « devine le code » */
+.game-meta { color: var(--texte-doux); font-size: 0.9rem; margin: 0 0 0.5rem; }
+.scenario { font-size: 1.15rem; margin: 0 0 1rem; max-width: var(--lecture); }
+.choices.codes { grid-template-columns: repeat(auto-fit, minmax(4.5rem, 1fr)); }
+.choices.codes .choice { text-align: center; font-family: var(--police-titre); font-size: 1.2rem; font-weight: 500; }
+.game-actions { margin-top: 1rem; }
+
+/* Texte réservé aux lecteurs d'écran */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* 12. PAGE TIMELINE : frise à faire défiler */
+.frise {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0 0 1rem;
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+}
+.frise li { position: relative; flex: 0 0 10.5rem; padding-top: 1.5rem; scroll-snap-align: center; }
+/* Le trait de la frise et le point de chaque étape */
+.frise li::before { content: ""; position: absolute; top: 0.45rem; left: -0.75rem; right: 0; border-top: 2px solid var(--ligne); }
+.frise li:first-child::before { left: 0; }
+.frise li::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 1rem;
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 50%;
+  background: var(--fond);
+  border: 2px solid var(--accent);
+}
+.frise li.is-active::after { background: var(--accent-fort); border-color: var(--accent-fort); }
+
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  width: 100%;
+  height: 100%;
+  font: inherit;
+  text-align: left;
+  padding: 0.9rem 1rem;
+  background: var(--surface);
+  color: var(--texte);
+  border: 1px solid var(--ligne);
+  border-radius: var(--rayon);
+  cursor: pointer;
+}
+.step:hover { border-color: var(--accent); }
+.step[aria-pressed="true"] { border-color: var(--accent-fort); background: var(--accent-pale); }
+.step-year { font-family: var(--police-titre); font-size: 1.5rem; line-height: 1.1; }
+.step-title { font-size: 0.92rem; color: var(--texte-doux); }
+
+.icone { width: 1.5rem; height: 1.5rem; fill: none; stroke: var(--accent-fort); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+
+.step-detail { margin-top: 1rem; padding: clamp(1.1rem, 4vw, 1.75rem); background: var(--surface); border: 1px solid var(--ligne); border-radius: var(--rayon); }
+.step-meta { display: flex; align-items: center; gap: 0.5rem; margin: 0 0 0.4rem; color: var(--accent-fort); font-weight: 600; font-size: 0.92rem; }
+.step-detail h3 { font-size: clamp(1.4rem, 4vw, 1.8rem); margin-bottom: 0.6em; }
+.step-detail p { max-width: var(--lecture); }
+.step-detail p:last-child { margin-bottom: 0; }
+.frise-nav { display: flex; gap: 0.6rem; margin-top: 1rem; }
+.btn:disabled { opacity: 0.45; cursor: default; pointer-events: none; }
+
+/* 13. PAGE DOMAINES : DNS pas à pas, comparateur de prix, cycle de vie */
+.dns-etape { opacity: 0.18; transition: opacity 0.3s; }
+.dns-etape.is-vu { opacity: 0.55; }
+.dns-etape.is-actif { opacity: 1; }
+.schema .num { fill: var(--accent-fort); font-weight: 600; font-size: 14px; }
+.dns-nav { display: flex; align-items: center; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
+.dns-compteur { margin: 1rem 0 0.25rem; font-weight: 600; color: var(--accent-fort); }
+.dns-texte { margin: 0; max-width: var(--lecture); min-height: 5.5em; }
+
+.prix-controle { display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem 1rem; margin-bottom: 1.25rem; }
+.prix-controle input[type="range"] { flex: 1 1 12rem; accent-color: var(--accent-fort); }
+.barres { display: grid; gap: 0.9rem; }
+.barre-ligne { display: grid; grid-template-columns: 4rem 1fr 6rem; align-items: center; gap: 0.75rem; }
+.barre-fond { background: var(--accent-pale); border-radius: 999px; height: 0.9rem; overflow: hidden; }
+.barre { display: block; height: 100%; background: var(--accent); border-radius: 999px; transition: width 0.35s; }
+.barre-valeur { font-weight: 600; text-align: right; }
+.note { font-size: 0.9rem; color: var(--texte-doux); max-width: var(--lecture); }
+
+.cycle { list-style: none; margin: 1.5rem 0 0; padding: 0; display: grid; gap: 0.75rem; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); }
+.cycle li { background: var(--surface); border: 1px solid var(--ligne); border-top: 4px solid var(--c); border-radius: var(--rayon); padding: 1rem; }
+.cycle h3 { font-size: 1.1rem; margin-bottom: 0.3em; }
+.cycle p { margin: 0; font-size: 0.93rem; color: var(--texte-doux); }
+.cycle li:nth-child(1) { --c: var(--accent); }
+.cycle li:nth-child(2) { --c: #A8874A; }
+.cycle li:nth-child(3) { --c: #C27A4A; }
+.cycle li:nth-child(4) { --c: var(--ko); }
+.cycle li:nth-child(5) { --c: #8A8A8A; }
+
+@media (max-width: 30rem) {
+  .barre-ligne { grid-template-columns: 3.5rem 1fr; }
+  .barre-valeur { grid-column: 2; text-align: left; }
+}
+
+/* 14. TIMELINE : étiquettes d'époque et idées */
+.frise li.frise-ere { flex: 0 0 auto; padding: 1.5rem 0.25rem 0 0.75rem; }
+.frise li.frise-ere::after { display: none; }
+.frise-ere span {
+  display: block;
+  min-height: 4.5rem;
+  padding-left: 0.6rem;
+  border-left: 3px solid var(--accent);
+  font-family: var(--police-titre);
+  font-weight: 500;
+  color: var(--accent-fort);
+  white-space: nowrap;
+}
+.step-ere {
+  margin-left: 0.25rem;
+  padding: 0.05rem 0.6rem;
+  border: 1px solid var(--ligne);
+  border-radius: 999px;
+  color: var(--texte-doux);
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+/* 15. PAGE STANDARDS : cartes des organismes et démonstration avant / après */
+.org { background: var(--surface); border: 1px solid var(--ligne); border-radius: var(--rayon); padding: 1.5rem; }
+.org-sigle { margin: 0 0 0.2rem; font-family: var(--police-titre); font-size: 2rem; line-height: 1.1; color: var(--accent-fort); }
+.org h3 { font-size: 1rem; font-weight: 500; color: var(--texte-doux); margin-bottom: 0.8rem; }
+.org p { margin: 0 0 0.6rem; font-size: 0.97rem; }
+.org p:last-child { margin-bottom: 0; }
+
+.curseur input { width: 100%; accent-color: var(--accent-fort); }
+.curseur-reperes { display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--texte-doux); }
+.demo-frames { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.25rem 0; }
+.frame { border: 1px solid var(--ligne); border-radius: var(--rayon); overflow: hidden; background: #fff; }
+.frame-barre { display: flex; align-items: center; gap: 0.4rem; padding: 0.5rem 0.75rem; background: var(--fond); border-bottom: 1px solid var(--ligne); font-size: 0.85rem; color: var(--texte-doux); }
+.frame-barre i { display: inline-block; width: 0.6rem; height: 0.6rem; border-radius: 50%; background: var(--ligne); }
+
+/* La mini-page affichée dans chaque navigateur */
+.mini { padding: 1rem; font-family: var(--police-texte); font-size: 0.9rem; overflow: hidden; }
+.mini-menu { display: flex; gap: 0.75rem; margin: 0 0 1rem; padding: 0; list-style: none; font-size: 0.85rem; font-weight: 500; color: var(--accent-fort); }
+.mini-corps { display: flex; align-items: flex-start; gap: 1rem; }
+.mini-texte { flex: 1 1 auto; min-width: 0; }
+.mini h4 { margin: 0 0 0.4rem; font-family: var(--police-titre); font-size: 1.2rem; font-weight: 500; }
+.mini p { margin: 0 0 0.8rem; line-height: 1.5; }
+.mini-btn { display: inline-block; padding: 0.4rem 0.9rem; background: var(--accent-fort); color: #fff; border-radius: 999px; }
+.mini-image { flex: 0 0 5rem; height: 5rem; border-radius: 10px; background: var(--accent-pale); border: 1px solid var(--accent); }
+
+/* Navigateur B : ses défauts augmentent avec le niveau du curseur */
+.demo:not([data-niveau="0"]) .frame-b .mini { font-family: "Times New Roman", Times, serif; font-size: 1rem; }
+.demo:not([data-niveau="0"]) .frame-b .mini-btn { background: #d8d8d8; color: #000; border: 2px outset #aaa; border-radius: 0; padding: 0.2rem 0.6rem; }
+.demo:not([data-niveau="0"]) .frame-b .mini-corps { padding-left: 1.25rem; }
+.demo:not([data-niveau="0"]) .frame-b .mini-image { flex-basis: 6.5rem; height: 6.5rem; margin-top: 0.75rem; }
+.demo[data-niveau="2"] .frame-b .mini { font-family: "Courier New", monospace; font-size: 0.8rem; }
+.demo[data-niveau="2"] .frame-b .mini-menu { display: block; padding-left: 1.25rem; list-style: disc; }
+.demo[data-niveau="2"] .frame-b .mini-corps { display: block; }
+.demo[data-niveau="2"] .frame-b .mini-image { width: 140%; height: 3rem; margin-top: 0.5rem; }
+.demo[data-niveau="2"] .frame-b .mini-btn { display: none; }
+.demo[data-niveau="2"] .frame-b .mini p { color: #a0a0a0; }
+
+@media (max-width: 40rem) {
+  .demo-frames { grid-template-columns: 1fr; }
+}
+
+/* 16. PAGE SÉCURITÉ : cartes à retourner, message annoté, quiz, onglets */
+.flip-face { background: var(--surface); border: 1px solid var(--ligne); border-radius: var(--rayon); padding: 1.5rem; }
+.flip-face h3 { margin-bottom: 0.4em; }
+.flip-face p { margin: 0 0 0.6rem; font-size: 0.97rem; }
+.flip-back ul { margin: 0.25rem 0 0; padding-left: 1.1rem; font-size: 0.95rem; }
+.flip-back li { margin-bottom: 0.4rem; }
+.flip-btn { display: none; margin-top: 0.75rem; }
+.js .flip-btn { display: inline-block; }
+.js .flip { perspective: 1200px; }
+.js .flip-inner { display: grid; transform-style: preserve-3d; transition: transform 0.6s; }
+.js .flip-face { grid-area: 1 / 1; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.js .flip-back { transform: rotateY(180deg); }
+.js .flip.is-flipped .flip-inner { transform: rotateY(180deg); }
+
+/* Message (exemple annoté et quiz) */
+.mail { background: var(--surface); border: 1px solid var(--ligne); border-radius: var(--rayon); padding: 1.25rem; font-size: 0.95rem; max-width: 38rem; overflow-wrap: anywhere; }
+.mail-ligne { margin: 0 0 0.4rem; }
+.mail-label { display: inline-block; min-width: 3.4rem; color: var(--texte-doux); }
+.mail-corps { margin: 1rem 0 0; padding-top: 1rem; border-top: 1px solid var(--ligne); }
+.repere { background: var(--ko-pale); color: var(--texte); padding: 0.05em 0.25em; border-radius: 4px; }
+.repere-n { display: inline-block; margin-left: 0.3em; min-width: 1.3em; height: 1.3em; line-height: 1.3em; text-align: center; border-radius: 50%; background: var(--ko); color: #fff; font-size: 0.75rem; font-weight: 600; }
+.legende { max-width: var(--lecture); padding-left: 1.2rem; }
+.legende li { margin-bottom: 0.5rem; }
+.contexte { margin: 0 0 0.75rem; color: var(--texte-doux); font-size: 0.95rem; }
+.choices.duo { grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); }
+
+/* Onglets Utilisateur / Développeur */
+.onglets-liste { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 1.25rem; }
+.onglet { font: inherit; padding: 0.55rem 1.2rem; border: 1px solid var(--ligne); border-radius: 999px; background: var(--surface); color: var(--texte); cursor: pointer; }
+.onglet:hover { border-color: var(--accent); }
+.onglet[aria-selected="true"] { background: var(--accent-fort); border-color: var(--accent-fort); color: #fff; }
+.js .panneau-titre { display: none; }
+.regles { max-width: var(--lecture); padding-left: 1.1rem; }
+.regles li { margin-bottom: 0.7rem; }
+
+/* 17. PAGE SOURCES */
+.table-sources td:first-child { font-weight: 400; white-space: normal; }
+.table-sources th[scope="rowgroup"] { background: var(--surface); border-bottom: 1px solid var(--ligne); vertical-align: top; min-width: 8rem; }
+.table-sources td { min-width: 6rem; }
+.url-texte { display: block; margin-top: 0.2rem; font-size: 0.85rem; color: var(--texte-doux); overflow-wrap: anywhere; }
+
+/* 18. NAVIGATION ENTRE LES SUJETS ET PIED DE PAGE */
+.page-nav { border-top: 1px solid var(--ligne); padding: clamp(2rem, 6vw, 3.5rem) 0; }
+.page-nav-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.page-nav-lien {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 1rem 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--ligne);
+  border-radius: var(--rayon);
+  color: var(--texte);
+  text-decoration: none;
+  transition: border-color 0.2s;
+}
+.page-nav-lien:hover { border-color: var(--accent); color: var(--texte); }
+.page-nav-suivant { grid-column: 2; text-align: right; }
+.page-nav-sens { font-size: 0.85rem; color: var(--texte-doux); }
+.page-nav-nom { font-family: var(--police-titre); font-size: 1.25rem; }
+.site-footer p + p { margin-top: 0.5rem; }
+
+/* 19. MOUVEMENT : titres animés, apparitions, barre de lecture, survols, transition entre pages */
+.page-title > * { animation: apparition 0.7s ease both; }
+.page-title > :nth-child(2) { animation-delay: 0.12s; }
+
+.js .reveal {
+  opacity: 0;
+  transform: translateY(1.25rem);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition-delay: var(--delai, 0s);
+}
+.js .reveal.is-visible { opacity: 1; transform: none; }
+
+.progression {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  pointer-events: none;
+}
+
+.card, .page-nav-lien { transition: border-color 0.2s, transform 0.25s ease; }
+.card:hover, .page-nav-lien:hover { transform: translateY(-3px); }
+.btn { transition: background-color 0.2s, border-color 0.2s, transform 0.15s; }
+.btn:active { transform: scale(0.98); }
+
+/* Fondu doux entre deux pages (navigateurs récents) ; l'en-tête reste en place */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+  .site-header { view-transition-name: entete; }
+  ::view-transition-old(root), ::view-transition-new(root) { animation-duration: 0.25s; }
+}
+
+/* 20. CHALEUR : ocre doré, fonds sable, illustrations, ombres douces */
+:root {
+  --fond: #F8F4EC;
+  --fond-alt: #F1EADC;       /* sable : une section sur deux */
+  --ligne: #E6DFD0;
+  --chaud: #C58B3A;          /* ocre doré : fonds, traits, petits accents */
+  --chaud-fort: #8A5A14;     /* ocre foncé : texte (contraste vérifié sur crème et sable) */
+  --chaud-pale: #F4E8D2;
+  --rayon: 16px;
+  --ombre: 0 1px 2px rgba(90, 65, 20, 0.05), 0 8px 22px rgba(90, 65, 20, 0.07);
+}
+
+.section:nth-of-type(even) { background: var(--fond-alt); }
+.site-footer { background: var(--fond-alt); }
+
+.logo::after { content: ""; display: inline-block; width: 0.4em; height: 0.4em; margin-left: 0.15em; border-radius: 50%; background: var(--chaud); }
+
+.card, .widget, .org, .figure-box, .step-detail, .mail, .cycle li, .page-nav-lien, .table-wrap { box-shadow: var(--ombre); }
+.card:hover, .page-nav-lien:hover { border-color: var(--chaud); }
+
+.callout { background: var(--chaud-pale); border-left-color: var(--chaud); }
+.step-year { color: var(--chaud-fort); }
+.mot-chaud {
+  color: var(--chaud-fort);
+  background: linear-gradient(transparent 68%, rgba(197, 139, 58, 0.3) 68%);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* Illustrations au trait : toutes dans le même style */
+.illu { display: block; width: 100%; height: auto; }
+.illu .trait { fill: none; stroke: var(--accent-fort); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.illu .fin { stroke-width: 1.2; opacity: 0.45; }
+.illu .sauge { fill: var(--accent-pale); }
+.illu .sable { fill: var(--chaud-pale); }
+.illu .blanc { fill: var(--surface); }
+.illu .chaud { fill: var(--chaud); stroke: none; }
+.illu .seg { fill: none; stroke-width: 3; stroke-linecap: round; }
+.illu .nord { font-family: var(--police-titre); font-size: 15px; fill: var(--texte-doux); }
+.aiguille { transform-box: fill-box; transform-origin: 50% 50%; animation: balancier 6s ease-in-out infinite; }
+@keyframes balancier { 0%, 100% { transform: rotate(-9deg); } 50% { transform: rotate(13deg); } }
+
+/* Accueil : texte à gauche, carte et boussole à droite */
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); align-items: center; gap: clamp(1.5rem, 5vw, 4rem); }
+.hero h1 { max-width: 16ch; }
+.hero-illu { max-width: 28rem; justify-self: end; }
+
+/* Pages de sujet : une petite illustration à droite du titre */
+.page-title { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: clamp(1.5rem, 5vw, 4rem); align-items: center; }
+.page-title > h1, .page-title > .lead { grid-column: 1; }
+.page-title > .page-illu { grid-column: 2; grid-row: 1 / span 2; width: clamp(7rem, 16vw, 10.5rem); }
+
+@media (max-width: 40rem) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-illu { max-width: 18rem; justify-self: start; }
+  .page-title { grid-template-columns: 1fr; }
+  .page-title > .page-illu { grid-column: 1; grid-row: 1; width: 5.5rem; margin-bottom: 0.75rem; }
+}
+
+/* 21. CORRECTIFS : alignement des titres de page et coupure du titre d'accueil */
+.page-title { padding-left: var(--espace); padding-right: var(--espace); }
+.hero h1 { max-width: none; font-size: clamp(2.25rem, 5vw, 3.5rem); }
+.mot-chaud { display: inline-block; }
+
+/* 22. NOUVEAUX ÉLÉMENTS INTERACTIFS */
+
+/* Page URL : « colle ton URL » (mêmes couleurs que le décomposeur, via data-seg) */
+.url-form label,
+.force-champ label { display: block; font-weight: 600; margin-bottom: 0.4rem; }
+.url-form-ligne { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.url-form input,
+.force-champ input {
+  flex: 1 1 14rem;
+  min-width: 0;
+  font: inherit;
+  font-family: ui-monospace, "SF Mono", Consolas, monospace;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid var(--ligne);
+  border-radius: var(--rayon);
+  background: var(--fond);
+  color: var(--texte);
+}
+.url-erreur { margin: 1rem 0 0; padding: 0.8rem 1rem; border-radius: var(--rayon); background: var(--ko-pale); }
+#url-resultat { margin-top: 1.25rem; }
+.url-morceau {
+  padding: 0.55rem 0.75rem;
+  background: var(--seg);
+  border-bottom: 3px solid var(--seg-fort);
+  border-radius: 8px;
+  overflow-wrap: anywhere;
+}
+.url-legende { list-style: none; padding: 0; margin: 1.25rem 0 0; display: grid; gap: 0.6rem; }
+.url-legende li {
+  padding: 0.6rem 0.9rem;
+  background: var(--seg);
+  border-left: 4px solid var(--seg-fort);
+  border-radius: 0 var(--rayon) var(--rayon) 0;
+  overflow-wrap: anywhere;
+}
+
+/* Page sécurité : temps de force brute (la jauge réutilise .barre-fond et .barre) */
+.force-champ input { width: 100%; }
+.force-criteres { list-style: none; padding: 0; margin: 1rem 0; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.force-criteres li {
+  padding: 0.3rem 0.75rem;
+  border: 1px solid var(--ligne);
+  border-radius: 999px;
+  font-size: 0.9rem;
+  color: var(--texte-doux);
+}
+.force-criteres li.is-ok { background: var(--ok-pale); border-color: var(--ok); color: var(--texte); }
+.force-jauge { margin-bottom: 0.75rem; }
+.force-jauge .barre { width: 0; }
+.force-jauge[data-niveau="faible"] .barre { background: var(--ko); }
+.force-jauge[data-niveau="moyen"] .barre { background: var(--chaud); }
+.force-jauge[data-niveau="fort"] .barre { background: var(--ok); }
+.force-temps { font-size: 1.1rem; font-weight: 600; }
+
+/* Page standards : jeu « qui écrit cette règle ? » (mêmes boutons que le jeu des codes) */
+.titre-jeu { margin-top: 2.5rem; }
+.choices.orgas { grid-template-columns: repeat(auto-fit, minmax(6.5rem, 1fr)); }
+.choices.orgas .choice { text-align: center; font-family: var(--police-titre); font-size: 1.1rem; font-weight: 500; }
+
+/* Page domaines : jeu « remets dans l'ordre » */
+.ordre-liste { list-style: none; padding: 0; margin: 1rem 0; display: grid; gap: 0.5rem; max-width: 30rem; }
+.ordre-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.5rem 0.4rem 0.9rem;
+  background: var(--fond);
+  border: 1px solid var(--ligne);
+  border-radius: var(--rayon);
+}
+.ordre-num { color: var(--texte-doux); min-width: 1.4rem; }
+.ordre-nom { flex: 1; font-weight: 600; }
+.ordre-marque { font-size: 0.85rem; color: var(--texte-doux); }
+.ordre-item.is-ok { background: var(--ok-pale); border-color: var(--ok); }
+.ordre-item.is-ko { background: var(--ko-pale); border-color: var(--ko); }
+.ordre-fleche {
+  font: inherit;
+  width: 2.6rem;
+  height: 2.6rem;
+  border: 1px solid var(--ligne);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--accent-fort);
+  cursor: pointer;
+}
+.ordre-fleche:hover:not(:disabled) { border-color: var(--accent); background: var(--accent-pale); }
+.ordre-fleche:disabled { opacity: 0.35; cursor: default; }
+.ordre-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+/* Icônes (img/icones) : dans le texte, devant les grands titres, sur les organismes */
+.ico { display: inline-block; width: 1.15em; height: 1.15em; margin-right: 0.45em; vertical-align: -0.2em; }
+.ico-titre {
+  display: inline-block;
+  width: 2.4rem;
+  height: 2.4rem;
+  padding: 0.5rem;
+  margin-right: 0.65rem;
+  vertical-align: middle;
+  border-radius: 50%;
+  background: var(--chaud-pale);
+}
+/* Correctif : « .org p » (plus précis) écrasait la taille prévue pour les sigles */
+.org .org-sigle { font-size: 2rem; }
+.org-sigle .ico-org { width: 1.6rem; height: 1.6rem; vertical-align: -0.1em; }
+.regles { list-style: none; padding-left: 0; }
+.regles li { position: relative; padding-left: 2rem; }
+.regles li > .ico { position: absolute; left: 0; top: 0.3em; }
+.flip-face h3 .ico, .cycle h3 .ico { width: 1.3em; height: 1.3em; }
+
+/* Frise : une illustration par étape, à gauche du texte */
+.step-detail.avec-image {
+  display: grid;
+  grid-template-columns: minmax(0, 11rem) minmax(0, 1fr);
+  gap: 0 clamp(1rem, 3vw, 1.75rem);
+  align-items: start;
+}
+.step-image { display: block; width: 100%; height: auto; border-radius: var(--rayon); }
+@media (max-width: 40rem) {
+  .step-detail.avec-image { grid-template-columns: 1fr; }
+  .step-image { max-width: 12rem; margin-bottom: 1rem; }
+}
+
+/* Accueil : carnet de voyage (compteur et tampon sur les cartes visitées) */
+.carnet { margin: -0.5rem 0 1.25rem; color: var(--texte-doux); }
+.carnet-effacer {
+  font: inherit;
+  font-size: 0.9rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--accent-fort);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+}
+.card { position: relative; }
+.card.is-visitee { border-color: var(--chaud); }
+.tampon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.2rem 0.6rem;
+  border: 2px solid var(--chaud-fort);
+  border-radius: 6px;
+  color: var(--chaud-fort);
+  font-family: var(--police-titre);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transform: rotate(-6deg);
+  background: var(--surface);
+}

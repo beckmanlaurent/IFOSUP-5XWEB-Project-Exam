@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Timeline du web · WebAtlas</title>
+    <meta name="description"
+        content="Les grandes dates du web, d'ARPANET au Web 3.0 : technologies, services et appareils qui ont changé la façon d'utiliser le web.">
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%235E7F6B'/%3E%3C/svg%3E">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Jost:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js"></script>
+    <script src="js/timeline.js" defer></script>
+</head>
+
+<body>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="logo" href="index.html">WebAtlas</a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+            <nav class="site-nav" id="menu" aria-label="Navigation principale">
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="timeline.html" aria-current="page">Timeline</a></li>
+                    <li><a href="urls.html">URL</a></li>
+                    <li><a href="domaines.html">Domaines</a></li>
+                    <li><a href="standards.html">Standards</a></li>
+                    <li><a href="securite.html">Sécurité</a></li>
+                    <li><a href="sources.html">Sources</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="contenu" tabindex="-1">
+
+        <div class="container page-title">
+            <h1>Timeline du web</h1>
+            <p class="lead">Le web a à peine plus de trente ans, et il a déjà changé plusieurs fois. Remontons le temps,
+                des premiers câbles jusqu'au web d'aujourd'hui.</p>
+            <svg class="illu page-illu" viewBox="0 0 160 130" aria-hidden="true" focusable="false">
+                <path class="trait" d="M14 88H146" />
+                <path class="trait fin" d="M28 78Q45 40 62 78M62 76Q81 30 100 76M100 74Q119 22 138 74"
+                    stroke-dasharray="3 5" />
+                <circle class="trait blanc" cx="28" cy="88" r="7" />
+                <circle class="trait blanc" cx="62" cy="88" r="9" />
+                <circle class="trait sauge" cx="100" cy="88" r="11" />
+                <circle class="chaud" cx="138" cy="88" r="13" />
+            </svg>
+        </div>
+
+        <section class="section" aria-labelledby="difference">
+            <div class="container">
+                <h2 id="difference"><img class="ico-titre" src="img/icones/globe.svg" alt="" width="24" height="24">Internet et le web : deux choses différentes</h2>
+                <div class="prose">
+                    <p>On confond souvent les deux. <strong>Internet</strong> est le réseau mondial de câbles, de
+                        machines et de règles de communication qui relie les ordinateurs. Le <strong>web</strong> est un
+                        service qui fonctionne sur ce réseau : des pages liées entre elles, qu'on consulte avec un
+                        navigateur.</p>
+                    <p>Le courriel et de nombreux jeux en ligne utilisent aussi Internet, sans passer forcément par le
+                        web.</p>
+                </div>
+
+                <figure>
+                    <div class="figure-box">
+                        <svg class="schema" viewBox="0 0 420 260" role="img" aria-labelledby="inet-titre inet-desc">
+                            <title id="inet-titre">Le web dans Internet</title>
+                            <desc id="inet-desc">Une grande forme représente Internet, le réseau. À l'intérieur, une
+                                forme plus petite représente le web. À côté du web, le courriel, les jeux en ligne et la
+                                visioconférence utilisent aussi Internet.</desc>
+                            <ellipse class="boite" cx="210" cy="130" rx="200" ry="115" />
+                            <text x="210" y="45" text-anchor="middle">Internet : le réseau</text>
+                            <ellipse class="boite" cx="150" cy="135" rx="105" ry="68"
+                                style="fill: var(--accent-pale)" />
+                            <text x="150" y="130" text-anchor="middle">Le web</text>
+                            <text class="doux" x="150" y="152" text-anchor="middle">pages et liens</text>
+                            <text class="doux" x="335" y="108" text-anchor="middle">courriel</text>
+                            <text class="doux" x="335" y="132" text-anchor="middle">jeux en ligne</text>
+                            <text class="doux" x="335" y="156" text-anchor="middle">visioconférence</text>
+                        </svg>
+                    </div>
+                    <figcaption>Internet est le réseau. Le web est l'un des services qui l'utilisent.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="versions">
+            <div class="container">
+                <h2 id="versions"><img class="ico-titre" src="img/icones/couches.svg" alt="" width="24" height="24">Web 1.0, 2.0, 3.0 : trois générations</h2>
+                <div class="prose">
+                    <p>Pour résumer l'histoire du web, on parle de trois générations : « Web 1.0 », « Web 2.0 » et « Web
+                        3.0 ». Ce ne sont pas des versions officielles, mais des étiquettes. Elles ne se remplacent pas
+                        les unes les autres : leurs technologies existent encore toutes aujourd'hui.</p>
+                </div>
+                <ol class="cycle">
+                    <li>
+                        <h3><img class="ico" src="img/icones/oeil.svg" alt="" width="24" height="24">Web 1.0</h3>
+                        <p>Le web de lecture (« read-only ») : des pages statiques en HTML, que l'on consulte sans
+                            pouvoir y répondre.</p>
+                    </li>
+                    <li>
+                        <h3><img class="ico" src="img/icones/crayon.svg" alt="" width="24" height="24">Web 2.0</h3>
+                        <p>Le web de participation (« read-write »). Le terme apparaît en 1999 et devient
+                            populaire en 2004. Wikis, blogs, YouTube, Facebook : les utilisateurs créent le contenu.</p>
+                    </li>
+                    <li>
+                        <h3><img class="ico" src="img/icones/donnees.svg" alt="" width="24" height="24">Web 3.0</h3>
+                        <p>Le web de données, ou web sémantique. Le W3C y travaille depuis 2001 : les données sont
+                            décrites pour que les machines les comprennent.</p>
+                    </li>
+                </ol>
+                <div class="callout">
+                    <p><strong>Définition retenue.</strong> Ce site suit le W3C et l'article d'Asaad Khaleel Ibrahim
+                        (2021) : le Web 3.0 est le web sémantique, ou web de données. Ses technologies existent déjà et
+                        sont utilisées sur certaines parties du web, sans avoir remplacé le Web 2.0.</p>
+                    <p><strong>À ne pas confondre avec « Web3 ».</strong> En 2014, Gavin Wood, cofondateur de la
+                        blockchain Ethereum, reprend l'expression « Web 3.0 » dans un autre sens : un web décentralisé,
+                        construit sur la blockchain. On l'écrit souvent « Web3 ». C'est une autre idée que le web
+                        sémantique présenté ici.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="frise-titre">
+            <div class="container">
+                <h2 id="frise-titre"><img class="ico-titre" src="img/icones/drapeau.svg" alt="" width="24" height="24">La frise, étape par étape</h2>
+                <p class="prose">Fais défiler la frise et clique sur une date pour voir ce qui s'est passé et ce que ça
+                    a changé. Les boutons « Précédent » et « Suivant » fonctionnent aussi.</p>
+
+                <noscript>
+                    <p>Activez JavaScript pour afficher la frise.</p>
+                </noscript>
+                <ol class="frise" id="frise" aria-label="Les grandes étapes du web"></ol>
+                <div class="step-detail" id="frise-detail" aria-live="polite"></div>
+                <div class="frise-nav">
+                    <button class="btn btn-ghost" type="button" id="frise-prec">Précédent</button>
+                    <button class="btn btn-ghost" type="button" id="frise-suiv">Suivant</button>
+                </div>
+
+            </div>
+        </section>
+
+        <nav class="page-nav" aria-label="Navigation entre les sujets">
+            <div class="container page-nav-inner">
+                <a class="page-nav-lien" rel="prev" href="index.html"><span class="page-nav-sens"><span
+                            aria-hidden="true">←</span> Précédent</span><span class="page-nav-nom">Accueil</span></a>
+                <a class="page-nav-lien page-nav-suivant" rel="next" href="urls.html"><span
+                        class="page-nav-sens">Suivant <span aria-hidden="true">→</span></span><span
+                        class="page-nav-nom">URL</span></a>
+            </div>
+        </nav>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>Les sources de cette page sont listées sur la <a href="sources.html">page Sources</a>.</p>
+            <p>WebAtlas, par Laurent Beckman, 2026.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
